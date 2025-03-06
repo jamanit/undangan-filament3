@@ -1,0 +1,145 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Filament\Resources\InvitationResource\Pages;
+use App\Filament\Resources\InvitationResource\RelationManagers;
+use App\Models\Invitation;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+use Filament\Forms\Components\Grid;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
+use Filament\Tables\Columns\ViewColumn;
+
+use App\Models\User;
+
+class InvitationResource extends Resource
+{
+    protected static ?string $model = Invitation::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-envelope';
+    protected static ?int $navigationSort    = 2;
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Select::make('user_id')
+                    ->label('User')
+                    // ->placeholder('')
+                    ->required()
+                    ->options(
+                        User::all()->pluck('name', 'id')->mapWithKeys(function ($name, $id) {
+                            return [$id => $name . ' (' . User::find($id)->email . ')'];
+                        })->toArray()
+                    )
+
+                    ->preload()
+                    ->searchable(),
+                TextInput::make('code')
+                    ->label('Code')
+                    ->placeholder('Enter Code')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->readOnly()
+                    ->unique(ignoreRecord: true)
+                    ->hidden(fn(string $context): bool => $context === 'create'),
+                Select::make('template_id')
+                    ->label('Template')
+                    // ->placeholder('')
+                    ->required()
+                    ->relationship('template', 'name')
+                    ->preload()
+                    ->searchable(),
+                TextInput::make('expired_date')
+                    ->label('Expired Date')
+                    ->required()
+                    ->type('date')
+                    ->string(),
+                Select::make('status')
+                    ->label('Status')
+                    // ->placeholder('')
+                    ->required()
+                    ->options([
+                        'Active'   => 'Active',
+                        'Inactive' => 'Inactive',
+                    ]),
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('user.name')
+                    ->label('User')
+                    ->searchable()
+                    ->sortable()
+                    ->formatStateUsing(function ($state, $record) {
+                        return $record->user->name . ' (' . $record->user->email . ')';
+                    }),
+                TextColumn::make('code')
+                    ->label('Code')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('template.name')
+                    ->label('Template')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('expired_date')
+                    ->label('Expired Date')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime()
+                    ->sortable()
+                    ->searchable(),
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            // 
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index'  => Pages\ListInvitations::route('/'),
+            'create' => Pages\CreateInvitation::route('/create'),
+            'edit'   => Pages\EditInvitation::route('/{record}/edit'),
+        ];
+    }
+}
