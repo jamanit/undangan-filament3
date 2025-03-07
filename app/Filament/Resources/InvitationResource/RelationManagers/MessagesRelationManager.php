@@ -54,19 +54,20 @@ class MessagesRelationManager extends RelationManager
                         'redo',
                         'undo',
                     ]),
-                Radio::make('presence_confirm')
+                Select::make('presence_confirm')
                     ->label('Presence Confirm')
-                    ->options([
-                        true => 'Yes',
-                        false => 'No',
-                    ])
                     ->nullable()
-                    ->inline(),
+                    ->options([
+                        'Yes' => 'Yes',
+                        'No'  => 'No',
+                    ])
+                    ->reactive(),
                 TextInput::make('guest_total')
                     ->label('Guest Total')
-                    ->nullable()
+                    ->required()
                     ->numeric()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('presence_confirm') === 'Yes'),
             ]);
     }
 
@@ -79,13 +80,16 @@ class MessagesRelationManager extends RelationManager
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('message')
+                    ->label('Message')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(25)
+                    ->formatStateUsing(fn($state) => strip_tags($state)),
                 TextColumn::make('presence_confirm')
                     ->label('Presence Confirm')
                     ->sortable()
-                    ->searchable()
-                    ->formatStateUsing(function ($state) {
-                        return $state ? 'Yes' : 'No';
-                    }),
+                    ->searchable(),
                 TextColumn::make('guest_total')
                     ->label('Guset Total')
                     ->sortable()
@@ -93,6 +97,7 @@ class MessagesRelationManager extends RelationManager
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
+                    ->since()
                     ->sortable()
                     ->searchable(),
             ])

@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('account_name')->nullable();
             $table->string('account_number')->nullable();
             $table->string('account_holder')->nullable();
-            $table->string('recipient_address')->nullable();
             $table->string('recipient_name')->nullable();
+            $table->string('recipient_address')->nullable();
+            $table->string('recipient_phone_number')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,11 @@ class EditInvitation extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('seeInvitation')
+                ->label('See Invitation')
+                ->icon('heroicon-o-eye')
+                ->url(fn() => url('/', $this->record->id))
+                ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
     }

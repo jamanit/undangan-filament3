@@ -13,6 +13,11 @@ class EditTemplate extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('seeTemplate')
+                ->label('See Template')
+                ->icon('heroicon-o-eye')
+                ->url(fn() => url('/'))
+                ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
     }

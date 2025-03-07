@@ -101,7 +101,12 @@ class TemplateResource extends Resource
                 TextColumn::make('status')
                     ->label('Status')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'Publish'   => 'success',
+                        'Inpublish' => 'gray',
+                    }),
                 ImageColumn::make('image')
                     ->label('Image')
                     ->width(50)
@@ -111,6 +116,7 @@ class TemplateResource extends Resource
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
+                    ->since()
                     ->sortable()
                     ->searchable(),
             ])
@@ -118,6 +124,11 @@ class TemplateResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('seeTemplate')
+                    ->label('See Template')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn($record) => url('/'))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

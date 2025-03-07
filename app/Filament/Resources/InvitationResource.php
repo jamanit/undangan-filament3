@@ -129,10 +129,16 @@ class InvitationResource extends Resource
                 TextColumn::make('status')
                     ->label('Status')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'Active'   => 'success',
+                        'Inactive' => 'gray',
+                    }),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
+                    ->since()
                     ->sortable()
                     ->searchable(),
             ])

@@ -51,11 +51,13 @@ class StreamingsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('youtube_url')
                     ->label('Youtube URL')
+                    ->searchable()
                     ->sortable()
-                    ->searchable(),
+                    ->limit(50),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
+                    ->since()
                     ->sortable()
                     ->searchable(),
             ])

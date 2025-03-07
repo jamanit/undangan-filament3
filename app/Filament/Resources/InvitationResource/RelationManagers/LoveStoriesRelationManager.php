@@ -66,9 +66,16 @@ class LoveStoriesRelationManager extends RelationManager
                     ->label('Title')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('text')
+                    ->label('Text')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(20)
+                    ->formatStateUsing(fn($state) => strip_tags($state)),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
+                    ->since()
                     ->sortable()
                     ->searchable(),
             ])

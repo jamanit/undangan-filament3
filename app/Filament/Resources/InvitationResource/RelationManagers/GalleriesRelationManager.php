@@ -66,6 +66,12 @@ class GalleriesRelationManager extends RelationManager
                     ->height(50)
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime()
+                    ->since()
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //

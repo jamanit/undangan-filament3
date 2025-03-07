@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\InvitationResource\RelationManagers;
 
+use App\Models\Gift;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -9,6 +10,24 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Wizard;
+use Filament\Forms\Components\Wizard\Step;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Group;
+
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
+use Filament\Tables\Columns\ViewColumn;
 
 class GiftsRelationManager extends RelationManager
 {
@@ -18,9 +37,50 @@ class GiftsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('type')
+                Select::make('type')
+                    ->label('Type')
                     ->required()
-                    ->maxLength(255),
+                    ->options([
+                        'Rekening' => 'Rekening',
+                        'Paket'    => 'Paket',
+                    ])
+                    ->reactive(),
+                TextInput::make('account_name')
+                    ->label('Account Name')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('type') === 'Rekening'),
+                TextInput::make('account_number')
+                    ->label('Account Number')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('type') === 'Rekening'),
+                TextInput::make('account_holder')
+                    ->label('Account Holder')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('type') === 'Rekening'),
+                TextInput::make('recipient_name')
+                    ->label('Recipient Name')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('type') === 'Paket'),
+                TextInput::make('recipient_address')
+                    ->label('Recipient Address')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('type') === 'Paket'),
+                TextInput::make('recipient_phone_number')
+                    ->label('Recipient Phone Number')
+                    ->required()
+                    ->string()
+                    ->maxLength(255)
+                    ->visible(fn($get) => $get('type') === 'Paket'),
             ]);
     }
 
@@ -29,7 +89,16 @@ class GiftsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('type')
             ->columns([
-                Tables\Columns\TextColumn::make('type'),
+                TextColumn::make('type')
+                    ->label('Type')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime()
+                    ->since()
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //

@@ -82,15 +82,18 @@ class EventsRelationManager extends RelationManager
                     ->searchable(),
                 TextColumn::make('location')
                     ->label('Location')
+                    ->searchable()
                     ->sortable()
-                    ->searchable(),
+                    ->limit(25),
                 TextColumn::make('address')
                     ->label('Address')
+                    ->searchable()
                     ->sortable()
-                    ->searchable(),
+                    ->limit(25),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
+                    ->since()
                     ->sortable()
                     ->searchable(),
             ])
