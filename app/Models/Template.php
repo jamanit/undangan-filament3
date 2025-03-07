@@ -17,7 +17,6 @@ class Template extends Model
         static::saving(function ($template) {
             // delete old files when updating
             $files = ['image'];
-
             foreach ($files as $file) {
                 if ($template->isDirty($file)) {
                     $oldFile = $template->getOriginal($file);
@@ -31,7 +30,6 @@ class Template extends Model
         static::deleting(function ($template) {
             // delete files when deleted
             $files = ['image'];
-
             foreach ($files as $file) {
                 if ($template->$file) {
                     Storage::disk('public')->delete($template->$file);

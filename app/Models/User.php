@@ -65,7 +65,6 @@ class User extends Authenticatable
         static::saving(function ($user) {
             // delete old files when updating
             $files = ['photo'];
-
             foreach ($files as $file) {
                 if ($user->isDirty($file)) {
                     $oldFile = $user->getOriginal($file);
@@ -79,7 +78,6 @@ class User extends Authenticatable
         static::deleting(function ($user) {
             // delete files when deleted
             $files = ['photo'];
-
             foreach ($files as $file) {
                 if ($user->$file) {
                     Storage::disk('public')->delete($user->$file);

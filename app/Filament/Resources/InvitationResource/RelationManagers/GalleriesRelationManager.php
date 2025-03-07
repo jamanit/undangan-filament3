@@ -60,7 +60,12 @@ class GalleriesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('photo')
             ->columns([
-                Tables\Columns\TextColumn::make('photo'),
+                ImageColumn::make('photo')
+                    ->label('Photo')
+                    ->width(50)
+                    ->height(50)
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //

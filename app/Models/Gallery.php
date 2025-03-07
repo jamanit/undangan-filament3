@@ -12,12 +12,15 @@ class Gallery extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'photo' => 'array',
+    ];
+
     protected static function booted()
     {
         static::saving(function ($template) {
             // delete old files when updating
             $files = ['photo'];
-
             foreach ($files as $file) {
                 if ($template->isDirty($file)) {
                     $oldFile = $template->getOriginal($file);
@@ -31,7 +34,6 @@ class Gallery extends Model
         static::deleting(function ($template) {
             // delete files when deleted
             $files = ['photo'];
-
             foreach ($files as $file) {
                 if ($template->$file) {
                     Storage::disk('public')->delete($template->$file);

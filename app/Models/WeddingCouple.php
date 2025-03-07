@@ -17,7 +17,6 @@ class WeddingCouple extends Model
         static::saving(function ($wedding_couple) {
             // delete old files when updating
             $files = ['bride_photo', 'groom_photo'];
-
             foreach ($files as $file) {
                 if ($wedding_couple->isDirty($file)) {
                     $oldFile = $wedding_couple->getOriginal($file);
@@ -31,7 +30,6 @@ class WeddingCouple extends Model
         static::deleting(function ($wedding_couple) {
             // delete files when deleted
             $files = ['bride_photo', 'groom_photo'];
-
             foreach ($files as $file) {
                 if ($wedding_couple->$file) {
                     Storage::disk('public')->delete($wedding_couple->$file);
