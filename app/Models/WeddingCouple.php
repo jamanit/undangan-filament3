@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Template extends Model
+class WeddingCouple extends Model
 {
     use HasFactory;
 
@@ -14,13 +14,13 @@ class Template extends Model
 
     protected static function booted()
     {
-        static::saving(function ($template) {
+        static::saving(function ($wedding_couple) {
             // delete old files when updating
-            $files = ['image'];
+            $files = ['bride_photo', 'groom_photo'];
 
             foreach ($files as $file) {
-                if ($template->isDirty($file)) {
-                    $oldFile = $template->getOriginal($file);
+                if ($wedding_couple->isDirty($file)) {
+                    $oldFile = $wedding_couple->getOriginal($file);
                     if ($oldFile) {
                         Storage::disk('public')->delete($oldFile);
                     }
@@ -28,20 +28,20 @@ class Template extends Model
             }
         });
 
-        static::deleting(function ($template) {
+        static::deleting(function ($wedding_couple) {
             // delete files when deleted
-            $files = ['image'];
+            $files = ['bride_photo', 'groom_photo'];
 
             foreach ($files as $file) {
-                if ($template->$file) {
-                    Storage::disk('public')->delete($template->$file);
+                if ($wedding_couple->$file) {
+                    Storage::disk('public')->delete($wedding_couple->$file);
                 }
             }
         });
     }
 
-    public function invitations()
+    public function invitation()
     {
-        return $this->hasMany(Invitation::class);
+        return $this->hasOne(Invitation::class);
     }
 }

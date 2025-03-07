@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Template extends Model
+class Gallery extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class Template extends Model
     {
         static::saving(function ($template) {
             // delete old files when updating
-            $files = ['image'];
+            $files = ['photo'];
 
             foreach ($files as $file) {
                 if ($template->isDirty($file)) {
@@ -30,7 +30,7 @@ class Template extends Model
 
         static::deleting(function ($template) {
             // delete files when deleted
-            $files = ['image'];
+            $files = ['photo'];
 
             foreach ($files as $file) {
                 if ($template->$file) {
@@ -40,8 +40,8 @@ class Template extends Model
         });
     }
 
-    public function invitations()
+    public function invitation()
     {
-        return $this->hasMany(Invitation::class);
+        return $this->belongsTo(Invitation::class);
     }
 }

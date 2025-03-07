@@ -14,6 +14,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Wizard;
+use Filament\Forms\Components\Wizard\Step;
+use Filament\Forms\Components\Tabs;
+
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\TextInput;
@@ -29,7 +34,7 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon  = 'heroicon-o-users';
-    protected static ?string $navigationGroup = 'Data Masters';
+    // protected static ?string $navigationGroup = 'Data Masters';
     protected static ?int $navigationSort     = 1;
 
     // public static function getNavigationBadge(): ?string
@@ -45,7 +50,6 @@ class UserResource extends Resource
             ->schema([
                 FileUpload::make('photo')
                     ->label('Photo')
-                    // ->placeholder('')
                     ->nullable()
                     ->image()
                     ->directory('users')
@@ -64,21 +68,18 @@ class UserResource extends Resource
                     ->schema([
                         TextInput::make('name')
                             ->label('Name')
-                            ->placeholder('Enter Name')
                             ->required()
                             ->string()
-                            ->maxLength(50),
+                            ->maxLength(255),
                         TextInput::make('email')
                             ->label('Email')
-                            ->placeholder('Enter Email')
                             ->required()
                             ->string()
-                            ->maxLength(100)
+                            ->maxLength(255)
                             ->email()
                             ->unique(ignoreRecord: true),
                         TextInput::make('password')
                             ->label('Password')
-                            ->placeholder('Enter Password')
                             ->password()
                             ->required(fn(string $context): bool => $context === 'create')
                             ->string()
@@ -87,7 +88,6 @@ class UserResource extends Resource
                             ->confirmed(),
                         TextInput::make('password_confirmation')
                             ->label('Confirm Password')
-                            ->placeholder('Enter Confirm Password')
                             ->password()
                             ->required(fn(string $context): bool => $context === 'create')
                             ->string()
@@ -95,14 +95,12 @@ class UserResource extends Resource
                             ->dehydrated(fn($state) => !empty($state)),
                         TextInput::make('whatsapp_number')
                             ->label('WhatsApp Number')
-                            ->placeholder('Enter WhatsApp Number')
                             ->nullable()
                             ->numeric()
                             ->type('tel')
                             ->tel(),
                         Select::make('roles')
                             ->label('Roles')
-                            // ->placeholder('')
                             ->nullable()
                             ->multiple()
                             ->relationship('roles', 'name')

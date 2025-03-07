@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Template extends Model
+class Quote extends Model
 {
     use HasFactory;
 
@@ -14,13 +14,13 @@ class Template extends Model
 
     protected static function booted()
     {
-        static::saving(function ($template) {
+        static::saving(function ($quote) {
             // delete old files when updating
-            $files = ['image'];
+            $files = ['image_1', 'image_2', 'image_3', 'image_4'];
 
             foreach ($files as $file) {
-                if ($template->isDirty($file)) {
-                    $oldFile = $template->getOriginal($file);
+                if ($quote->isDirty($file)) {
+                    $oldFile = $quote->getOriginal($file);
                     if ($oldFile) {
                         Storage::disk('public')->delete($oldFile);
                     }
@@ -28,20 +28,20 @@ class Template extends Model
             }
         });
 
-        static::deleting(function ($template) {
+        static::deleting(function ($quote) {
             // delete files when deleted
-            $files = ['image'];
+            $files = ['image_1', 'image_2', 'image_3', 'image_4'];
 
             foreach ($files as $file) {
-                if ($template->$file) {
-                    Storage::disk('public')->delete($template->$file);
+                if ($quote->$file) {
+                    Storage::disk('public')->delete($quote->$file);
                 }
             }
         });
     }
 
-    public function invitations()
+    public function invitation()
     {
-        return $this->hasMany(Invitation::class);
+        return $this->hasOne(Invitation::class);
     }
 }

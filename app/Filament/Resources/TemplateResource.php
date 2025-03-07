@@ -14,6 +14,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Wizard;
+use Filament\Forms\Components\Wizard\Step;
+use Filament\Forms\Components\Tabs;
+
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\TextInput;
@@ -28,8 +33,7 @@ class TemplateResource extends Resource
 {
     protected static ?string $model = Template::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Data Masters';
+    protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
     protected static ?int $navigationSort     = 2;
 
     public static function form(Form $form): Form
@@ -38,25 +42,22 @@ class TemplateResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->label('Name')
-                    ->placeholder('Enter Name')
                     ->required()
                     ->string()
                     ->maxLength(255),
                 TextInput::make('parameter')
                     ->label('Parameter')
-                    ->placeholder('Enter Parameter')
                     ->required()
                     ->string()
                     ->maxLength(255),
-                TextInput::make('type')
+                Select::make('type')
                     ->label('Type')
-                    ->placeholder('Enter Type')
                     ->required()
-                    ->string()
-                    ->maxLength(255),
+                    ->options([
+                        'Undangan Pernikahan'   => 'Undangan Pernikahan',
+                    ]),
                 Select::make('status')
                     ->label('Status')
-                    // ->placeholder('')
                     ->required()
                     ->options([
                         'Publish'    => 'Publish',
@@ -64,7 +65,6 @@ class TemplateResource extends Resource
                     ]),
                 FileUpload::make('image')
                     ->label('Image')
-                    // ->placeholder('')
                     ->required()
                     ->image()
                     ->directory('templates')

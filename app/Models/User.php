@@ -64,28 +64,59 @@ class User extends Authenticatable
     {
         static::saving(function ($user) {
             // delete old files when updating
-            if ($user->isDirty('photo')) {
-                $oldFile = $user->getOriginal('photo');
-                if ($oldFile) {
-                    Storage::disk('public')->delete($oldFile);
+            $files = ['photo'];
+
+            foreach ($files as $file) {
+                if ($user->isDirty($file)) {
+                    $oldFile = $user->getOriginal($file);
+                    if ($oldFile) {
+                        Storage::disk('public')->delete($oldFile);
+                    }
                 }
             }
         });
 
         static::deleting(function ($user) {
             // delete files when deleted
-            if ($user->photo) {
-                Storage::disk('public')->delete($user->photo);
+            $files = ['photo'];
+
+            foreach ($files as $file) {
+                if ($user->$file) {
+                    Storage::disk('public')->delete($user->$file);
+                }
             }
 
-            // foreach ($user->projects as $project) {
-            //     if ($project->image) {
-            //         Storage::disk('public')->delete($project->image);
-            //     }
-            // } 
+            foreach ($user->invitations as $invitation) {
+                if ($invitation->weddingCouple->bride_photo) {
+                    Storage::disk('public')->delete($invitation->weddingCouple->bride_photo);
+                }
+                if ($invitation->weddingCouple->groom_photo) {
+                    Storage::disk('public')->delete($invitation->weddingCouple->groom_photo);
+                }
+            }
 
-            // delete relations when deleted
-            // $user->skills()->delete(); 
+            foreach ($user->invitations as $invitation) {
+                if ($invitation->quote->image_1) {
+                    Storage::disk('public')->delete($invitation->quote->image_1);
+                }
+                if ($invitation->quote->image_2) {
+                    Storage::disk('public')->delete($invitation->quote->image_2);
+                }
+                if ($invitation->quote->image_3) {
+                    Storage::disk('public')->delete($invitation->quote->image_3);
+                }
+                if ($invitation->quote->image_4) {
+                    Storage::disk('public')->delete($invitation->quote->image_4);
+                }
+            }
+
+            foreach ($user->invitations as $invitation) {
+                foreach ($invitation->galleries as $gallery) {
+                    if ($gallery->photo) {
+                        Storage::disk('public')->delete($gallery->photo);
+                    }
+                }
+            }
         });
     }
 
