@@ -49,7 +49,8 @@ class TemplateResource extends Resource
                     ->label('Parameter')
                     ->required()
                     ->string()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true),
                 Select::make('type')
                     ->label('Type')
                     ->required()
@@ -127,7 +128,7 @@ class TemplateResource extends Resource
                 Tables\Actions\Action::make('seeTemplate')
                     ->label('See Template')
                     ->icon('heroicon-o-eye')
-                    ->url(fn($record) => url('/'))
+                    ->url(fn($record) => url('/templates/' . $record->parameter))
                     ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
             ])

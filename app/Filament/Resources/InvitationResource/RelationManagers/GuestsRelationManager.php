@@ -69,7 +69,8 @@ class GuestsRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                CopyAction::make()->copyable(fn($record) => url('/', ['id' => $this->ownerRecord->id, 'name' => $record->name]))
+                CopyAction::make()
+                    ->copyable(fn($record) => $this->generateInvitationUrl($record))
                     ->label('Copy Invitation URL')
                     ->icon('heroicon-o-clipboard'),
                 Tables\Actions\EditAction::make(),
@@ -80,5 +81,15 @@ class GuestsRelationManager extends RelationManager
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    protected function generateInvitationUrl($record): string
+    {
+        $ownerId = $this->ownerRecord->id;
+        $coupleNames = $this->ownerRecord->weddingCouple
+            ? $this->ownerRecord->weddingCouple->bride_nickname . '&' . $this->ownerRecord->weddingCouple->groom_nickname
+            : 'Wanita&Pria';
+
+        return url('/' . $ownerId . '/' . $coupleNames . '/' . $record->name);
     }
 }

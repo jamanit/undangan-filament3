@@ -16,9 +16,18 @@ class EditInvitation extends EditRecord
             Actions\Action::make('seeInvitation')
                 ->label('See Invitation')
                 ->icon('heroicon-o-eye')
-                ->url(fn() => url('/', $this->record->id))
+                ->url(fn($record) => $this->generateInvitationUrl($record))
                 ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function generateInvitationUrl($record): string
+    {
+        $coupleNames = $record->weddingCouple
+            ? $record->weddingCouple->bride_nickname . '&' . $record->weddingCouple->groom_nickname
+            : 'Wanita&Pria';
+
+        return url('/' . $record->id . '/' . $coupleNames . '/Nama Tamu');
     }
 }

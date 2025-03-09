@@ -16,7 +16,7 @@ class EditTemplate extends EditRecord
             Actions\Action::make('seeTemplate')
                 ->label('See Template')
                 ->icon('heroicon-o-eye')
-                ->url(fn() => url('/'))
+                ->url(fn($record) => url('/templates/' . $record->parameter))
                 ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
