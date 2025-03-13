@@ -27,10 +27,34 @@ class SiteConfigSeeder extends Seeder
                 'file' => null,
             ],
             [
+                'name' => 'Favicon',
+                'key'  => 'favicon',
+                'type' => 'file',
+                'file' => null,
+            ],
+            [
                 'name' => 'Banner',
                 'key'  => 'banner',
                 'type' => 'file',
                 'file' => null,
+            ],
+            [
+                'name' => 'Hero Banner',
+                'key'  => 'hero_banner',
+                'type' => 'file',
+                'file' => null,
+            ],
+            [
+                'name'  => 'Title Banner',
+                'key'   => 'title_banner',
+                'type'  => 'textarea',
+                'value' => '<p>Selamat Datang di Website</p><p>Site Name</p>',
+            ],
+            [
+                'name'  => 'Caption Banner',
+                'key'   => 'caption_banner',
+                'type'  => 'textarea',
+                'value' => '<p>Bergabunglah dengan kami untuk merayakan momen-momen berharga dengan cara yang lebih modern dan mudah.</p>',
             ],
             [
                 'name'  => 'Site Name',
@@ -45,12 +69,6 @@ class SiteConfigSeeder extends Seeder
                 'value' => 'https://wwww.example-website-url.com',
             ],
             [
-                'name'  => 'About Us',
-                'key'   => 'about_us',
-                'type'  => 'textarea',
-                'value' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quas voluptatem beatae ex dolorum! Hic saepe pariatur architecto tempora illo dicta, ducimus, odio laborum aperiam cum quisquam, natus molestiae nostrum libero vero id nesciunt quis. Et ipsa odit esse, voluptates atque quidem voluptas veritatis quas rerum, cumque exercitationem, ipsum excepturi!',
-            ],
-            [
                 'name'  => 'Address',
                 'key'   => 'address',
                 'type'  => 'text',
@@ -61,6 +79,12 @@ class SiteConfigSeeder extends Seeder
                 'key'   => 'map_url',
                 'type'  => 'url',
                 'value' => 'https://wwww.example-map-url.com',
+            ],
+            [
+                'name'  => 'About Us',
+                'key'   => 'about_us',
+                'type'  => 'textarea',
+                'value' => '<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quas voluptatem beatae ex dolorum! Hic saepe pariatur architecto tempora illo dicta, ducimus, odio laborum aperiam cum quisquam, natus molestiae nostrum libero vero id nesciunt quis. Et ipsa odit esse, voluptates atque quidem voluptas veritatis quas rerum, cumque exercitationem, ipsum excepturi!</p>',
             ],
             [
                 'name'  => 'Phone Number',

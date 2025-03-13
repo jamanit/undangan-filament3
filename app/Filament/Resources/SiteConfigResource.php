@@ -169,12 +169,7 @@ class SiteConfigResource extends Resource
                     ->searchable()
                     ->limit(50)
                     ->getStateUsing(function ($record) {
-                        if ($record->type === 'file') {
-                            return $record->file;
-                        } else {
-                            return $record->value;
-                        }
-
+                        return strip_tags($record->value);
                         return null;
                     }),
                 TextColumn::make('created_at')

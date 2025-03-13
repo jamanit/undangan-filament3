@@ -1,7 +1,5 @@
- {{-- <nav id="topnav" class="defaultscroll is-sticky tagline-height"> --}}
  <nav id="topnav" class="defaultscroll is-sticky">
      <div class="container relative">
-         <!-- Logo container-->
          <a class="logo" href="index.html">
              <span class="inline-block dark:hidden">
                  @if ($siteConfigs['colored_logo']->file)
@@ -22,9 +20,7 @@
                  <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-white.png" class="h-7 hidden dark:inline-block" alt="">
              @endif
          </a>
-         <!-- End Logo container-->
 
-         <!-- Start Mobile Toggle -->
          <div class="menu-extras">
              <div class="menu-item">
                  <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
@@ -36,19 +32,17 @@
                  </a>
              </div>
          </div>
-         <!-- End Mobile Toggle -->
 
          <div id="navigation">
-             <!-- Navigation Menu-->
              <ul class="navigation-menu justify-end nav-light">
                  <li><a href="/" class="sub-menu-item">Home</a></li>
-                 <li><a href="contact.html" class="sub-menu-item">Services</a></li>
-                 <li><a href="contact.html" class="sub-menu-item">Templates</a></li>
-                 <li><a href="contact.html" class="sub-menu-item">Prices</a></li>
-                 <li><a href="contact.html" class="sub-menu-item">Testimonials</a></li>
-                 <li><a href="contact.html" class="sub-menu-item">Contact Us</a></li>
-                 <li><a href="contact.html" class="sub-menu-item">About Us</a></li>
-             </ul><!--end navigation menu-->
-         </div><!--end navigation-->
-     </div><!--end container-->
- </nav><!--end header-->
+                 <li><a href="#services" class="sub-menu-item">Services</a></li>
+                 <li><a href="#templates" class="sub-menu-item">Templates</a></li>
+                 <li><a href="#prices" class="sub-menu-item">Prices</a></li>
+                 <li><a href="#testimonials" class="sub-menu-item">Testimonials</a></li>
+                 <li><a href="#contact_us" class="sub-menu-item">Contact Us</a></li>
+                 <li><a href="#about_us" class="sub-menu-item">About Us</a></li>
+             </ul>
+         </div>
+     </div>
+ </nav>

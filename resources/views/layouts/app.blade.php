@@ -11,8 +11,13 @@
     <meta name="website" content="https://shreethemes.in">
     <meta name="email" content="support@shreethemes.in">
     <meta name="version" content="1.0.0">
+
     <!-- favicon -->
-    <link href="{{ asset('/') }}assets/hoxia-v1/images/favicon.ico" rel="shortcut icon">
+    @if ($siteConfigs['favicon']->file)
+        <link href="{{ Storage::url($siteConfigs['favicon']->file) }}" rel="shortcut icon">
+    @else
+        <link href="{{ asset('/') }}assets/hoxia-v1/images/favicon.ico" rel="shortcut icon">
+    @endif
 
     <!-- Css -->
     <link href="{{ asset('/') }}assets/hoxia-v1/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
@@ -28,22 +33,26 @@
 
 <body class="font-inter text-base text-slate-900 dark:text-white dark:bg-slate-900">
     <!-- Loader Start -->
-    <!-- <div id="preloader">
-            <div id="status">
-                <div class="logo">
-                    <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
-                </div>
-                <div class="justify-content-center">
-                    <div class="text-center">
-                        <h4 class="mb-0 mt-2 text-lg font-semibold">Hoxia</h4>
-                    </div>
+    <div id="preloader">
+        <div id="status">
+            <div class="logo">
+                @if ($siteConfigs['favicon']->file)
+                    <img src="{{ Storage::url($siteConfigs['favicon']->file) }}" class="h-20 w-20 d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
+                @else
+                    <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="h-20 w-20 d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
+                @endif
+            </div>
+            <div class="justify-content-center">
+                <div class="text-center">
+                    <h4 class="mb-0 mt-2 text-lg font-semibold">{{ $siteConfigs['site_name']->value ?? 'Site Name' }}</h4>
                 </div>
             </div>
-        </div> -->
+        </div>
+    </div>
     <!-- Loader End -->
 
     <!-- Tagline Start -->
-    {{-- <div class="tagline bg-gradient-to-tr from-sky-500 to-blue-700">
+    {{-- <div class="tagline bg-gradient-to-tr from-violet-500 to-violet-700">
         <div class="container relative">
             <div class="grid grid-cols-1">
                 <div class="flex justify-between">
@@ -70,7 +79,7 @@
     <!-- End Content -->
 
     <!-- Back to top -->
-    <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden justify-center text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-sky-500 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
+    <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden justify-center text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-violet-500 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
     <!-- Back to top -->
 
     <!-- Footer Start -->
