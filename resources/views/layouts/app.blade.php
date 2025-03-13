@@ -52,7 +52,7 @@
     <!-- Loader End -->
 
     <!-- Tagline Start -->
-    {{-- <div class="tagline bg-gradient-to-tr from-violet-500 to-violet-700">
+    {{-- <div class="tagline bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700">
         <div class="container relative">
             <div class="grid grid-cols-1">
                 <div class="flex justify-between">
@@ -79,7 +79,7 @@
     <!-- End Content -->
 
     <!-- Back to top -->
-    <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden justify-center text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-violet-500 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
+    <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden justify-center text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-{{ $primary_color }}-500 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
     <!-- Back to top -->
 
     <!-- Footer Start -->

@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <section class="relative py-10 bg-gradient-to-br from-violet-700 to-violet-600">
+        <section class="relative py-10 bg-gradient-to-br from-{{ $primary_color }}-700 to-{{ $primary_color }}-600">
         </section>
 
         <section class="relative md:pb-24 pb-16">
@@ -27,11 +27,11 @@
                                     @endif
                                 </div>
                                 <div class="p-6">
-                                    <span class="bg-violet-500/5 text-violet-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->type }}</span>
-                                    <h5 class="mt-3"><a href="blog-detail.html" class="title text-lg font-medium hover:text-violet-500 duration-500">{{ $template->name }}</a></h5>
+                                    <span class="bg-{{ $primary_color }}-500/5 text-{{ $primary_color }}-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->type }}</span>
+                                    <h5 class="mt-3"><a href="blog-detail.html" class="title text-lg font-medium hover:text-{{ $primary_color }}-500 duration-500">{{ $template->name }}</a></h5>
                                     <div class="mt-4">
                                         <a href="{{ route('templates.show', $template->parameter) }}" target="_blank"
-                                            class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
+                                            class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-{{ $primary_color }}-500 hover:text-{{ $primary_color }}-500 after:bg-{{ $primary_color }}-500 duration-500 ease-in-out">
                                             View template <i class="uil uil-arrow-right"></i>
                                         </a>
                                     </div>

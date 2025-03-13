@@ -12,7 +12,8 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ $paginator->previousPageUrl() }}" class="w-[40px] h-[40px] inline-flex justify-center items-center text-slate-400 bg-white dark:bg-slate-800 rounded-s-3xl hover:text-white border border-gray-100 dark:border-gray-800 hover:border-sky-500 dark:hover:border-sky-500 hover:bg-sky-500 dark:hover:bg-sky-500">
+                            <a href="{{ $paginator->previousPageUrl() }}"
+                                class="w-[40px] h-[40px] inline-flex justify-center items-center text-slate-400 bg-white dark:bg-slate-800 rounded-s-3xl hover:!text-white border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 hover:!bg-{{ $primary_color }}-500 dark:hover:!bg-{{ $primary_color }}-500">
                                 <i class="uil uil-angle-left text-[20px] rtl:rotate-180 rtl:-mt-1"></i>
                             </a>
                         </li>
@@ -29,9 +30,11 @@
                         @if (is_array($element))
                             @foreach ($element as $page => $url)
                                 @if ($page == $paginator->currentPage())
-                                    <li><span class="z-10 w-[40px] h-[40px] inline-flex justify-center items-center text-white bg-sky-500 border border-sky-500">{{ $page }}</span></li>
+                                    <li><span class="z-10 w-[40px] h-[40px] inline-flex justify-center items-center text-white bg-{{ $primary_color }}-500 border border-{{ $primary_color }}-500">{{ $page }}</span></li>
                                 @else
-                                    <li><a href="{{ $url }}" class="w-[40px] h-[40px] inline-flex justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-800 border border-gray-100 dark:border-gray-800 hover:border-sky-500 dark:hover:border-sky-500 hover:bg-sky-500 dark:hover:bg-sky-500">{{ $page }}</a></li>
+                                    <li><a href="{{ $url }}"
+                                            class="w-[40px] h-[40px] inline-flex justify-center items-center text-slate-400 hover:!text-white bg-white dark:bg-slate-800 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 hover:!bg-{{ $primary_color }}-500 dark:hover:!bg-{{ $primary_color }}-500">{{ $page }}</a>
+                                    </li>
                                 @endif
                             @endforeach
                         @endif
@@ -40,7 +43,8 @@
                     {{-- Next Page Link --}}
                     @if ($paginator->hasMorePages())
                         <li>
-                            <a href="{{ $paginator->nextPageUrl() }}" class="w-[40px] h-[40px] inline-flex justify-center items-center text-slate-400 bg-white dark:bg-slate-800 rounded-e-3xl hover:text-white border border-gray-100 dark:border-gray-800 hover:border-sky-500 dark:hover:border-sky-500 hover:bg-sky-500 dark:hover:bg-sky-500">
+                            <a href="{{ $paginator->nextPageUrl() }}"
+                                class="w-[40px] h-[40px] inline-flex justify-center items-center text-slate-400 bg-white dark:bg-slate-800 rounded-e-3xl hover:!text-white border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 hover:!bg-{{ $primary_color }}-500 dark:hover:!bg-{{ $primary_color }}-500">
                                 <i class="uil uil-angle-right text-[20px] rtl:rotate-180 rtl:-mt-1"></i>
                             </a>
                         </li>

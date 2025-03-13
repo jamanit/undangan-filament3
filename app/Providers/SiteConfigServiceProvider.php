@@ -24,7 +24,11 @@ class SiteConfigServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            $view->with('siteConfigs', app('siteConfigs'));
+            $siteConfigs = app('siteConfigs');
+            $primary_color = $siteConfigs['primary_color']->value ?? 'violet';
+
+            $view->with('siteConfigs', $siteConfigs)
+                ->with('primary_color', $primary_color);
         });
     }
 }

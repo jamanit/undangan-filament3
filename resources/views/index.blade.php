@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <section class="relative min-h-screen lg:py-24 py-20 bg-gradient-to-br from-violet-700 to-violet-600">
+        <section class="relative min-h-screen lg:py-24 py-20 bg-gradient-to-br from-{{ $primary_color }}-700 to-{{ $primary_color }}-600">
             @if ($siteConfigs['banner']->file)
                 <div class="absolute inset-0 bg-[url('{{ Storage::url($siteConfigs['banner']->file) }}')] bg-center bg-cover opacity-50"></div>
             @else
@@ -41,10 +41,10 @@
                 </div>
 
                 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-violet-500 dark:hover:bg-violet-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
+                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
                         <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-violet-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-violet-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                                 <i class="uil uil-server"></i>
                             </div>
                         </div>
@@ -55,10 +55,10 @@
                         </div>
                     </div>
 
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-violet-500 dark:hover:bg-violet-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
+                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
                         <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-violet-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-violet-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                                 <i class="uil uil-cloud-heart"></i>
                             </div>
                         </div>
@@ -69,10 +69,10 @@
                         </div>
                     </div>
 
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-violet-500 dark:hover:bg-violet-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
+                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
                         <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-violet-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-violet-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                                 <i class="uil uil-envelope-check"></i>
                             </div>
                         </div>
@@ -83,10 +83,10 @@
                         </div>
                     </div>
 
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-violet-500 dark:hover:bg-violet-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
+                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
                         <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-violet-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-violet-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                                 <i class="uil uil-users-alt"></i>
                             </div>
                         </div>
@@ -120,11 +120,11 @@
                                     @endif
                                 </div>
                                 <div class="p-6">
-                                    <span class="bg-violet-500/5 text-violet-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->type }}</span>
-                                    <h5 class="mt-3"><a href="blog-detail.html" class="title text-lg font-medium hover:text-violet-500 duration-500">{{ $template->name }}</a></h5>
+                                    <span class="bg-{{ $primary_color }}-500/5 text-{{ $primary_color }}-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->type }}</span>
+                                    <h5 class="mt-3"><a href="blog-detail.html" class="title text-lg font-medium hover:text-{{ $primary_color }}-500 duration-500">{{ $template->name }}</a></h5>
                                     <div class="mt-4">
                                         <a href="{{ route('templates.show', $template->parameter) }}" target="_blank"
-                                            class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
+                                            class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-{{ $primary_color }}-500 hover:text-{{ $primary_color }}-500 after:bg-{{ $primary_color }}-500 duration-500 ease-in-out">
                                             View template <i class="uil uil-arrow-right"></i>
                                         </a>
                                     </div>
@@ -134,7 +134,8 @@
                     </div>
 
                     <div class="flex itens-center justify-center mt-6">
-                        <a href="{{ route('templates.index') }}" class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-violet-500 hover:bg-violet-600 border border-violet-500 hover:border-violet-600 text-white focus:ring-[3px] focus:ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">
+                        <a href="{{ route('templates.index') }}"
+                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-{{ $primary_color }}-500 hover:bg-{{ $primary_color }}-600 border border-{{ $primary_color }}-500 hover:border-{{ $primary_color }}-600 text-white focus:ring-[3px] focus:ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">
                             View all templates</a>
                     </div>
                 @endif
@@ -158,10 +159,10 @@
                         </div>
 
                         <ul class="list-none text-slate-400">
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free month of service for new customers.</span></li>
+                            <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free month of service for new customers.</span></li>
                         </ul>
                         <a href=""
-                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-violet-500 border border-gray-100 dark:border-gray-800 hover:!border-violet-500 dark:hover:!border-violet-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Free
+                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-{{ $primary_color }}-500 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Free
                             Demo</a>
                     </div>
 
@@ -175,16 +176,16 @@
                         </div>
 
                         <ul class="list-none text-slate-400">
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free 7 days of service for new customers.</span></li>
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Our Talented & Experienced Marketing Agency</span></li>
+                            <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free 7 days of service for new customers.</span></li>
+                            <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Our Talented & Experienced Marketing Agency</span></li>
                         </ul>
                         <a href=""
-                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-violet-500 border border-gray-100 dark:border-gray-800 hover:!border-violet-500 dark:hover:!border-violet-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Subscribe
+                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-{{ $primary_color }}-500 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Subscribe
                             Now</a>
                     </div>
 
                     <div class="group relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
-                        <div class="bg-gradient-to-tr from-violet-500 to-violet-700 text-white py-2 px-6 h6 text-lg font-medium">Popular</div>
+                        <div class="bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700 text-white py-2 px-6 h6 text-lg font-medium">Popular</div>
                         <div class="p-6">
                             <h6 class="font-medium mb-5 text-xl">Professional</h6>
 
@@ -195,30 +196,32 @@
                             </div>
 
                             <ul class="list-none text-slate-400">
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free 14 days of service for new customers.</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Full Access</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Source Files</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Free Appointments</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Enhanced Security</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Free Installment</span></li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free 14 days of service for new customers.</span></li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Full Access</span></li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Source Files</span></li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Free Appointments</span></li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Enhanced Security</span></li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Free Installment</span></li>
                             </ul>
-                            <a href="" class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide !bg-violet-500 hover:!bg-violet-600 border !border-violet-500 hover:!border-violet-600 text-white focus:ring-[3px] focus:!ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Buy Now</a>
+                            <a href=""
+                                class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide !bg-{{ $primary_color }}-500 hover:!bg-{{ $primary_color }}-600 border !border-{{ $primary_color }}-500 hover:!border-{{ $primary_color }}-600 text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Buy
+                                Now</a>
 
                             <p class="text-sm text-slate-400 mt-1.5"><span class="text-red-600">*</span>T&C Apply</p>
                         </div>
                     </div>
 
-                    <div class="group p-[1px] relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md bg-gradient-to-tr from-violet-500 to-violet-700 h-fit">
+                    <div class="group p-[1px] relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700 h-fit">
                         <div class="p-6 bg-white dark:bg-slate-800 rounded-md">
                             <h6 class="font-medium mb-5 text-xl">Custom</h6>
 
                             <p class="text-slate-400 mb-5">Pricing plan will be as per client or company requirements</p>
 
                             <ul class="list-none">
-                                <li class="mb-1 font-medium flex"><i class="uil uil-check-circle text-violet-500 text-[20px] align-middle me-2"></i> <span class="mt-1">Custom Pricing</span></li>
+                                <li class="mb-1 font-medium flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-1">Custom Pricing</span></li>
                             </ul>
                             <a href=""
-                                class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-violet-500 border border-gray-100 dark:border-gray-800 hover:!border-violet-500 dark:hover:!border-violet-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Talk
+                                class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-{{ $primary_color }}-500 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Talk
                                 to us</a>
                         </div>
                     </div>
@@ -242,7 +245,7 @@
                                         <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Thomas Israel</a>
+                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Thomas Israel</a>
                                             <p class="text-slate-400">C.E.O</p>
                                         </div>
                                     </div>
@@ -266,7 +269,7 @@
                                         <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/05.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Barbara McIntosh</a>
+                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Barbara McIntosh</a>
                                             <p class="text-slate-400">C.E.O</p>
                                         </div>
                                     </div>
@@ -290,7 +293,7 @@
                                         <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/02.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Carl Oliver</a>
+                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Carl Oliver</a>
                                             <p class="text-slate-400">C.E.O</p>
                                         </div>
                                     </div>
@@ -314,7 +317,7 @@
                                         <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/04.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Jill Webb</a>
+                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Jill Webb</a>
                                             <p class="text-slate-400">C.E.O</p>
                                         </div>
                                     </div>
