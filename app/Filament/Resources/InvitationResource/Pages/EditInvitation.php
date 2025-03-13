@@ -14,7 +14,7 @@ class EditInvitation extends EditRecord
     {
         return [
             Actions\Action::make('seeInvitation')
-                ->label('See Invitation')
+                ->label('View Invitation')
                 ->icon('heroicon-o-eye')
                 ->url(fn($record) => $this->generateInvitationUrl($record))
                 ->openUrlInNewTab(),

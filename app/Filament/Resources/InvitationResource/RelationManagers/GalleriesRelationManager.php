@@ -47,7 +47,6 @@ class GalleriesRelationManager extends RelationManager
                     ->maxSize(2048)
                     ->deleteUploadedFileUsing(function ($file, $record) {
                         Storage::disk('public')->delete($file);
-
                         $record->update([
                             'photo' => null,
                         ]);

@@ -1,6 +1,6 @@
  <nav id="topnav" class="defaultscroll is-sticky">
      <div class="container relative">
-         <a class="logo" href="index.html">
+         <a class="logo" href="/">
              <span class="inline-block dark:hidden">
                  @if ($siteConfigs['colored_logo']->file)
                      <img src="{{ Storage::url($siteConfigs['colored_logo']->file) }}" class="h-7 l-dark" alt="">
@@ -36,12 +36,12 @@
          <div id="navigation">
              <ul class="navigation-menu justify-end nav-light">
                  <li><a href="/" class="sub-menu-item">Home</a></li>
-                 <li><a href="#services" class="sub-menu-item">Services</a></li>
-                 <li><a href="#templates" class="sub-menu-item">Templates</a></li>
-                 <li><a href="#prices" class="sub-menu-item">Prices</a></li>
-                 <li><a href="#testimonials" class="sub-menu-item">Testimonials</a></li>
-                 <li><a href="#contact_us" class="sub-menu-item">Contact Us</a></li>
-                 <li><a href="#about_us" class="sub-menu-item">About Us</a></li>
+                 <li><a href="/#services" class="sub-menu-item">Services</a></li>
+                 <li><a href="/#templates" class="sub-menu-item">Templates</a></li>
+                 <li><a href="/#prices" class="sub-menu-item">Prices</a></li>
+                 <li><a href="/#testimonials" class="sub-menu-item">Testimonials</a></li>
+                 <li><a href="/#contact_us" class="sub-menu-item">Contact Us</a></li>
+                 <li><a href="/#about_us" class="sub-menu-item">About Us</a></li>
              </ul>
          </div>
      </div>

@@ -4,9 +4,9 @@
     <div>
         <section class="relative min-h-screen lg:py-24 py-20 bg-gradient-to-br from-violet-700 to-violet-600">
             @if ($siteConfigs['banner']->file)
-                <div class="absolute inset-0 bg-[url('{{ Storage::url($siteConfigs['banner']->file) }}')] bg-center bg-cover opacity-30"></div>
+                <div class="absolute inset-0 bg-[url('{{ Storage::url($siteConfigs['banner']->file) }}')] bg-center bg-cover opacity-50"></div>
             @else
-                <div class="absolute inset-0 bg-[url('{{ asset('/') }}assets/hoxia-v1/images/bg/shape-1.png')] bg-center bg-cover opacity-30"></div>
+                <div class="absolute inset-0 bg-[url('{{ asset('/') }}assets/hoxia-v1/images/bg/shape-1.png')] bg-center bg-cover opacity-50"></div>
             @endif
             <div class="container relative">
                 <div class="grid md:grid-cols-12 grid-cols-1 items-center mt-10 gap-[30px]">
@@ -14,35 +14,34 @@
                         <div class="me-6">
                             <h4 class="font-semibold lg:leading-normal leading-normal text-3xl lg:text-5xl text-white">{!! $siteConfigs['title_banner']->value ?? '' !!}</h4>
                             <div class="mt-5 text-white/70 text-lg max-w-xl">{!! $siteConfigs['caption_banner']->value ?? '' !!}</div>
-
-                            {{-- <div class="mt-6">
-                                <a href="#templates" class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-sky-500 hover:bg-sky-600 border border-sky-500 hover:border-sky-600 text-white focus:ring-[3px] focus:ring-sky-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">
-                                    See Templates
-                                </a>
-                            </div> --}}
                         </div>
                     </div>
 
                     <div class="md:col-span-5">
                         @if ($siteConfigs['hero_banner']->file)
-                            <img src="{{ Storage::url($siteConfigs['hero_banner']->file) }}" alt="">
-                        @else
-                            {{-- <img src="{{ asset('/') }}assets/hoxia-v1/images/1.png" alt=""> --}}
+                            <img loading="lazy" src="{{ Storage::url($siteConfigs['hero_banner']->file) }}" alt="">
                         @endif
                     </div>
                 </div>
             </div>
+
+            <a href="#services" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
         </section>
 
-        <section class="relative md:pb-24 pb-16">
+        <section class="relative">
+            {{-- SERVICES --}}
             <div id="services" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4">
                 <div class="grid grid-cols-1 pb-8 text-center">
                     <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-medium">Services</h3>
-                    <p class="text-slate-400 max-w-xl mx-auto">Create, collaborate, and turn your ideas into incredible products with the definitive platform for digital design.</p>
+                    <p class="text-slate-400 max-w-xl mx-auto">Layanan lengkap untuk membuat undangan yang personal dan tak terlupakan.</p>
                 </div>
 
                 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-purple-500 dark:hover:bg-violet-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
+                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-violet-500 dark:hover:bg-violet-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
                         <div class="relative overflow-hidden text-transparent -m-3">
                             <i data-feather="hexagon" class="h-24 w-24 fill-violet-500/[0.07] group-hover:fill-white/20"></i>
                             <div class="absolute top-2/4 -translate-y-2/4 start-8 text-violet-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
@@ -100,37 +99,52 @@
                 </div>
             </div>
 
-            <div id="templates" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4">
+            {{-- TEMPLATES --}}
+            <div id="templates" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4 bg-gray-100 dark:bg-slate-900">
                 <div class="grid grid-cols-1 pb-8 text-center">
                     <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-medium">Templates</h3>
-                    <p class="text-slate-400 max-w-xl mx-auto">Create, collaborate, and turn your ideas into incredible products with the definitive platform for digital design.</p>
+                    <p class="text-slate-400 max-w-xl mx-auto">Sesuaikan undanganmu dengan template elegan untuk momen istimewa.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
-                    <div class="relative overflow-hidden group rounded-md shadow hover:shadow-md dark:shadow-gray-800 transition duration-500 dark:bg-slate-800">
-                        <img src="{{ asset('/') }}assets/hoxia-v1/images/blog/1.jpg" alt="">
-
-                        <div class="p-6">
-                            <span class="bg-violet-500/5 text-violet-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5 ms-1">VPS Hosting</span>
-
-                            <h5 class="mt-3"><a href="blog-detail.html" class="title text-lg font-medium hover:text-violet-500 duration-500">Quickly formulate backend</a></h5>
-
-                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
-
-                            <div class="mt-4">
-                                <a href="blog-detail.html"
-                                    class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">Read
-                                    More <i class="uil uil-arrow-right"></i></a>
+                @if ($templates->isEmpty())
+                    <p class="text-center text-slate-400 max-w-xl mx-auto">Template is not yet available.</p>
+                @else
+                    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+                        @foreach ($templates as $template)
+                            <div class="relative overflow-hidden group rounded-md shadow hover:shadow-md dark:shadow-gray-800 transition duration-500 dark:bg-slate-800">
+                                <div class="flex items-center justify-center">
+                                    @if ($template->image)
+                                        <img loading="lazy" src="{{ Storage::url($template->image) }}" alt="" class="h-[250px] oject-contain">
+                                    @else
+                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/blog/1.jpg" alt="">
+                                    @endif
+                                </div>
+                                <div class="p-6">
+                                    <span class="bg-violet-500/5 text-violet-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->type }}</span>
+                                    <h5 class="mt-3"><a href="blog-detail.html" class="title text-lg font-medium hover:text-violet-500 duration-500">{{ $template->name }}</a></h5>
+                                    <div class="mt-4">
+                                        <a href="{{ route('templates.show', $template->parameter) }}" target="_blank"
+                                            class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
+                                            View template <i class="uil uil-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
+
+                    <div class="flex itens-center justify-center mt-6">
+                        <a href="{{ route('templates.index') }}" class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-violet-500 hover:bg-violet-600 border border-violet-500 hover:border-violet-600 text-white focus:ring-[3px] focus:ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">
+                            View all templates</a>
+                    </div>
+                @endif
             </div>
 
+            {{-- PRICES --}}
             <div id="prices" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4">
                 <div class="grid grid-cols-1 pb-8 text-center">
                     <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-medium">Prices</h3>
-                    <p class="text-slate-400 max-w-xl mx-auto">Create, collaborate, and turn your ideas into incredible products with the definitive platform for digital design.</p>
+                    <p class="text-slate-400 max-w-xl mx-auto">Kami menawarkan harga terbaik untuk undangan yang luar biasa.</p>
                 </div>
 
                 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-[30px]">
@@ -211,11 +225,12 @@
                 </div>
             </div>
 
-            <div id="testimonials" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4">
+            {{-- TESTIMONIAL --}}
+            <div id="testimonials" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4 bg-gray-100 dark:bg-slate-900">
                 <div class="absolute inset-0 opacity-25 dark:opacity-50 bg-[url('{{ asset('/') }}assets/hoxia-v1/images/map.png')] bg-no-repeat bg-center bg-cover"></div>
                 <div class="relative grid grid-cols-1 pb-8 text-center z-1">
                     <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-medium">Testimonials</h3>
-                    <p class="text-slate-400 max-w-xl mx-auto">Create, collaborate, and turn your ideas into incredible products with the definitive platform for digital design.</p>
+                    <p class="text-slate-400 max-w-xl mx-auto">Cerita bahagia dari mereka yang telah membuat undangan bersama kami.</p>
                 </div>
 
                 <div class="container relative">
@@ -224,7 +239,7 @@
                             <div class="tiny-slide">
                                 <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
                                     <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
+                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
                                             <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Thomas Israel</a>
@@ -248,7 +263,7 @@
                             <div class="tiny-slide">
                                 <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
                                     <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img src="{{ asset('/') }}assets/hoxia-v1/images/client/05.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
+                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/05.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
                                             <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Barbara McIntosh</a>
@@ -272,7 +287,7 @@
                             <div class="tiny-slide">
                                 <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
                                     <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img src="{{ asset('/') }}assets/hoxia-v1/images/client/02.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
+                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/02.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
                                             <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Carl Oliver</a>
@@ -296,7 +311,7 @@
                             <div class="tiny-slide">
                                 <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
                                     <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img src="{{ asset('/') }}assets/hoxia-v1/images/client/04.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
+                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/04.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
                                         <div class="ps-4">
                                             <a href="" class="text-lg h6 hover:text-violet-500 duration-500 ease-in-out">Jill Webb</a>
@@ -321,228 +336,11 @@
                 </div>
             </div>
 
-            <div id="contact_us" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4">
-                <div class="grid grid-cols-1 pb-8 text-center">
-                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-medium">Contact Us</h3>
-                    <p class="text-slate-400 max-w-xl mx-auto">Create, collaborate, and turn your ideas into incredible products with the definitive platform for digital design.</p>
-                </div>
+            {{-- CONTACT US --}}
+            @include('contact-us')
 
-                <div class="relative">
-                    <div class="container">
-                        <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
-                            <div class="lg:col-span-7 md:col-span-6">
-                                <img src="{{ asset('/') }}assets/hoxia-v1/images/contact.svg" alt="">
-                            </div>
-
-                            <div class="lg:col-span-5 md:col-span-6">
-                                <div class="lg:ms-5">
-                                    <div class="bg-white dark:bg-slate-800 rounded-md shadow dark:shadow-gray-700 p-6">
-                                        <h3 class="mb-6 text-2xl leading-normal font-medium">Get in touch !</h3>
-
-                                        <form method="post" name="myForm" id="myForm" onsubmit="return validateForm()">
-                                            <p class="mb-0" id="error-msg"></p>
-                                            <div id="simple-msg"></div>
-                                            <div class="grid lg:grid-cols-12 lg:gap-6">
-                                                <div class="lg:col-span-6 mb-5">
-                                                    <label for="name" class="font-medium">Your Name:</label>
-                                                    <input name="name" id="name" type="text" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-violet-500 dark:border-gray-800 dark:focus:border-violet-500 focus:ring-0 mt-2" placeholder="Name :">
-                                                </div>
-
-                                                <div class="lg:col-span-6 mb-5">
-                                                    <label for="email" class="font-medium">Your Email:</label>
-                                                    <input name="email" id="email" type="email" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-violet-500 dark:border-gray-800 dark:focus:border-violet-500 focus:ring-0 mt-2" placeholder="Email :">
-                                                </div>
-                                            </div>
-
-                                            <div class="grid grid-cols-1">
-                                                <div class="mb-5">
-                                                    <label for="subject" class="font-medium">Your Question:</label>
-                                                    <input name="subject" id="subject" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-violet-500 dark:border-gray-800 dark:focus:border-violet-500 focus:ring-0 mt-2" placeholder="Subject :">
-                                                </div>
-
-                                                <div class="mb-5">
-                                                    <label for="comments" class="font-medium">Your Comment:</label>
-                                                    <textarea name="comments" id="comments" class="form-input w-full text-[15px] py-2 px-3 h-28 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-violet-500 dark:border-gray-800 dark:focus:border-violet-500 focus:ring-0 mt-2" placeholder="Message :"></textarea>
-                                                </div>
-                                            </div>
-                                            <button type="submit" id="submit" name="send"
-                                                class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-violet-500 hover:bg-violet-600 border border-violet-500 hover:border-violet-600 text-white focus:ring-[3px] focus:ring-violet-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">Send
-                                                Message</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="container lg:mt-24 mt-16">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
-                            @if ($siteConfigs['website_url']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="uil uil-phone"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">Phone</h5>
-                                        <div>
-                                            <a target="_blank" href="tel:{{ $siteConfigs['phone_number']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
-                                                {{ $siteConfigs['phone_number']->value }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['email']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="uil uil-envelope"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">Email</h5>
-                                        <div>
-                                            <a target="_blank" href="mailto:{{ $siteConfigs['email']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
-                                                dsadddsada{{ $siteConfigs['email']->value }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['whatsapp_number']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="uil uil-whatsapp"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">WhatsApp</h5>
-                                        <div>
-                                            <a target="_blank" href="https://wa.me/{{ $siteConfigs['whatsapp_number']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
-                                                {{ $siteConfigs['whatsapp_number']->value }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['instagram_url']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="uil uil-whatsapp"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">Instagram</h5>
-                                        <div>
-                                            <a target="_blank" href="{{ $siteConfigs['instagram_url']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
-                                                Visit Instagram
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['facebook_url']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="uil uil-facebook"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">Facebook</h5>
-                                        <div>
-                                            <a target="_blank" href="{{ $siteConfigs['facebook_url']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
-                                                Visit Facebook
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['tiktok_url']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="fa-brands fa-tiktok"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">TikTok</h5>
-                                        <div>
-                                            <a target="_blank" href="{{ $siteConfigs['tiktok_url']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">
-                                                Visit TikTok
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['x_url']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="fa-brands fa-x"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">X</h5>
-                                        <div>
-                                            <a target="_blank" href="{{ $siteConfigs['x_url']->value }}"
-                                                class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">Visit
-                                                X
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($siteConfigs['address']->value && $siteConfigs['map_url']->value)
-                                <div class="flex items-center gap-4">
-                                    <div class="relative text-transparent">
-                                        <div class="w-14 h-14 bg-violet-500/5 dark:bg-slate-800 text-violet-500 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
-                                            <i class="uil uil-map-marker"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <h5 class="title h5 text-lg font-medium">Location</h5>
-                                        <p class="text-slate-400 mt-3">{{ $siteConfigs['address']->value }}5</p>
-
-                                        <div>
-                                            <a target="_blank" href="{{ $siteConfigs['map_url']->value }}" data-type="iframe"
-                                                class="read-more lightbox relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-violet-500 hover:text-violet-500 after:bg-violet-500 duration-500 ease-in-out">View
-                                                on Map</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="about_us" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4">
+            {{-- ABOUT US --}}
+            <div id="about_us" class="container relative md:pt-24 md:pb-12 pt-16 pb-8 scroll-mt-4 bg-gray-100 dark:bg-slate-900">
                 <div class="grid grid-cols-1 pb-8 text-center">
                     <h3 class="md:text-3xl md:leading-normal text-2xl leading-normal font-medium">About Us</h3>
                 </div>

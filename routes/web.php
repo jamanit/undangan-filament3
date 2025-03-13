@@ -7,5 +7,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-Route::get('/templates/{parameter?}', [App\Http\Controllers\TemplateController::class, 'index'])->name('templates.index');
-Route::get('/{invitation_id?}/{wedding_couple_name?}/{guest_name?}', [App\Http\Controllers\InvitationController::class, 'index'])->name('invitations.index');
+Route::get('/templates', [App\Http\Controllers\HomeController::class, 'template'])->name('templates.index');
+Route::get('/templates/show/{parameter?}', [App\Http\Controllers\HomeController::class, 'template_show'])->name('templates.show');
+Route::get('/{invitation_id?}/{wedding_couple_name?}/{guest_name?}', [App\Http\Controllers\HomeController::class, 'invitaion_show'])->name('invitations.show');

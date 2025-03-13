@@ -65,19 +65,6 @@ class User extends Authenticatable
 
     protected static function booted()
     {
-        static::saving(function ($user) {
-            // delete old files when updating
-            $files = ['photo'];
-            foreach ($files as $file) {
-                if ($user->isDirty($file)) {
-                    $oldFile = $user->getOriginal($file);
-                    if ($oldFile) {
-                        Storage::disk('public')->delete($oldFile);
-                    }
-                }
-            }
-        });
-
         static::deleting(function ($user) {
             // delete files when deleted
             $files = ['photo'];

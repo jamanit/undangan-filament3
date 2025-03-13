@@ -14,19 +14,6 @@ class Quote extends Model
 
     protected static function booted()
     {
-        static::saving(function ($quote) {
-            // delete old files when updating
-            $files = ['image_1', 'image_2', 'image_3', 'image_4'];
-            foreach ($files as $file) {
-                if ($quote->isDirty($file)) {
-                    $oldFile = $quote->getOriginal($file);
-                    if ($oldFile) {
-                        Storage::disk('public')->delete($oldFile);
-                    }
-                }
-            }
-        });
-
         static::deleting(function ($quote) {
             // delete files when deleted
             $files = ['image_1', 'image_2', 'image_3', 'image_4'];

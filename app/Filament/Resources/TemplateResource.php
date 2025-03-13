@@ -125,9 +125,9 @@ class TemplateResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make('seeTemplate')
-                    ->label('See Template')
+                    ->label('View Template')
                     ->icon('heroicon-o-eye')
-                    ->url(fn($record) => url('/templates/' . $record->parameter))
+                    ->url(fn($record) => url('/templates/show/' . $record->parameter))
                     ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
             ])

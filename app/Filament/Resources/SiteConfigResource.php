@@ -102,7 +102,7 @@ class SiteConfigResource extends Resource
                     ->deleteUploadedFileUsing(function ($file, $record) {
                         Storage::disk('public')->delete($file);
                         $record->update([
-                            'value' => null,
+                            'file' => null,
                         ]);
                     })
                     ->visible(fn($get) => $get('type') === 'file'),
@@ -169,7 +169,12 @@ class SiteConfigResource extends Resource
                     ->searchable()
                     ->limit(50)
                     ->getStateUsing(function ($record) {
-                        return strip_tags($record->value);
+                        if ($record->type === 'file') {
+                            return $record->file;
+                        } else {
+                            return strip_tags($record->value);
+                        }
+
                         return null;
                     }),
                 TextColumn::make('created_at')

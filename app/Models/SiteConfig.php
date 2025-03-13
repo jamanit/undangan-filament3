@@ -14,19 +14,6 @@ class SiteConfig extends Model
 
     protected static function booted()
     {
-        static::saving(function ($side_config) {
-            // delete old files when updating
-            $files = ['file'];
-            foreach ($files as $file) {
-                if ($side_config->isDirty($file)) {
-                    $oldFile = $side_config->getOriginal($file);
-                    if ($oldFile) {
-                        Storage::disk('public')->delete($oldFile);
-                    }
-                }
-            }
-        });
-
         static::deleting(function ($side_config) {
             // delete files when deleted
             $files = ['file'];
