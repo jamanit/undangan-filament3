@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Invitation;
+use App\Models\SiteConfig;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,7 +23,15 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
         ]);
 
+        User::factory()->create([
+            'name'     => 'User',
+            'email'    => 'user@gmail.com',
+            'password' => 'password',
+        ]);
+
         $this->call([
+            SiteConfigSeeder::class,
+            SyncPermissionsSeeder::class,
             RolePermissionSeeder::class,
             TemplateSeeder::class,
             InvitationSeeder::class,

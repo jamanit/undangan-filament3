@@ -35,7 +35,7 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon  = 'heroicon-o-users';
     // protected static ?string $navigationGroup = 'Data Masters';
-    protected static ?int $navigationSort     = 1;
+    protected static ?int $navigationSort     = 2;
 
     // public static function getNavigationBadge(): ?string
     // {
@@ -56,10 +56,9 @@ class UserResource extends Resource
                     ->disk('public')
                     ->enableOpen()
                     // ->enableDownload()
-                    ->maxSize(3048)
+                    ->maxSize(2048)
                     ->deleteUploadedFileUsing(function ($file, $record) {
                         Storage::disk('public')->delete($file);
-
                         $record->update([
                             'photo' => null,
                         ]);
@@ -109,6 +108,7 @@ class UserResource extends Resource
                     ]),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {

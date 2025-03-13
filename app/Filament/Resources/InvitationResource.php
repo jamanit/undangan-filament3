@@ -32,7 +32,6 @@ use Filament\Tables\Columns\ViewColumn;
 
 use App\Models\User;
 use App\Models\Template;
-
 use App\Filament\Forms\WeddingCoupleForm;
 use App\Filament\Forms\QuoteForm;
 
@@ -41,7 +40,7 @@ class InvitationResource extends Resource
     protected static ?string $model = Invitation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?int $navigationSort    = 3;
+    protected static ?int $navigationSort    = 4;
 
     public static function form(Form $form): Form
     {

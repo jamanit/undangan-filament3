@@ -16,7 +16,7 @@ class TemplateSeeder extends Seeder
         $data = [
             [
                 'name'      => 'Template Name',
-                'parameter' => 'parameter',
+                'parameter' => 'floral-golden-brown',
                 'type'      => 'Undangan Pernikahan',
                 'status'    => 'Publish',
                 'image'     => null,

@@ -64,21 +64,25 @@
 
                 <div class="z-30 relative min-h-screen w-full px-4 py-8 flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="fade-right">
-                        Kutipan
+                        Quote
                     </p>
                     <div class="px-2">
                         <div class="mb-4 text-base text-primary-golden-brown-400 text-justify" data-aos="fade-right">
-                            <p>
-                                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu
-                                dari
-                                jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
-                                antaramu
-                                rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda
-                                (kebesaran
-                                Allah) bagi kaum yang berpikir."
-                                <br>
-                                (QS Ar-Rum 21)
-                            </p>
+                            @if (isset($invitation))
+                                {!! $invitation->quote->text ?? 'Belum ada quote' !!}
+                            @else
+                                <p>
+                                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu
+                                    dari
+                                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
+                                    antaramu
+                                    rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda
+                                    (kebesaran
+                                    Allah) bagi kaum yang berpikir."
+                                    <br>
+                                    (QS Ar-Rum 21)
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -96,7 +100,7 @@
 
                 <div class="z-30 px-4 py-8 relative min-h-screen w-full flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="fade-down">
-                        Mempelai
+                        Wedding Couple
                     </p>
                     <div class="px-2">
                         <div class="mb-4 text-center" data-aos="fade-down">
@@ -148,7 +152,7 @@
 
                 <div class="z-30 relative px-4 py-8 min-h-screen w-full flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="fade-right">
-                        Acara
+                        Events
                     </p>
 
                     <div id="countdown" class="mb-4 flex justify-center gap-2" data-countdown="2026-10-23 08:00:00" data-aos="fade-left">
@@ -230,7 +234,7 @@
 
                 <div class="z-30 relative px-4 py-8 min-h-screen w-full flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="flip-left">
-                        Galeri
+                        Galleries
                     </p>
                     <div class="mb-4">
                         <div class="grid grid-cols-3 gap-6">
@@ -287,7 +291,7 @@
 
                 <div class="z-30 relative px-4 py-8 min-h-screen w-full flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="fade-up">
-                        Kisah Cinta
+                        Love Stories
                     </p>
                     <div class="mb-4 w-full rounded-lg border-2 border-primary-golden-brown-400 bg-white/75 p-4 text-center text-gray-600 shadow-lg" data-aos="fade-up">
                         <p class="mb-4 text-center font-sacramento text-2xl font-semibold text-primary-golden-brown-400">
@@ -334,7 +338,7 @@
 
                 <div class="z-30 relative px-4 py-8 min-h-screen w-full flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="zoom-in">
-                        Ucapan
+                        Messages
                     </p>
                     <div class="mb-4 w-full rounded-lg border-2 border-primary-golden-brown-400 bg-white/75 p-4 shadow-lg" data-aos="zoom-in">
                         <form id="message-form" onsubmit="sendMessage(event, 'bg-primary-golden-brown-500')">
@@ -365,7 +369,7 @@
                                 <input type="number" name="guest_totals" id="guest_totals" placeholder="Masukkan jumlah tamu (orang)" class="w-full rounded-lg border border-primary-golden-brown-400 p-3 focus:outline-none focus:ring-2 focus:ring-primary-golden-brown-400" />
                             </div>
                             <button type="button" class="cursor-pointer mt-4 w-full rounded-full bg-primary-golden-brown-500 p-2 text-base text-white hover:bg-primary-golden-brown-600">
-                                <i class="fas fa-message"></i> KIRIM UCAPAN
+                                <i class="fas fa-message"></i> SEND MESSAGE
                             </button>
                         </form>
 
@@ -405,14 +409,14 @@
                     </div>
 
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="zoom-in">
-                        Hadiah
+                        Gift
                     </p>
                     <div class="mb-4 w-full rounded-lg border-2 border-primary-golden-brown-400 bg-white/75 p-4 shadow-lg" data-aos="zoom-in">
                         <p class="mb-8 text-justify text-base text-gray-600">
                             Bagi yang ingin memberikan tanda kasih, dapat mengirimkan melalui fitur di bawah ini:
                         </p>
                         <button id="open-modal" class="cursor-pointer w-full rounded-full bg-primary-golden-brown-500 p-2 text-base text-white hover:bg-primary-golden-brown-600">
-                            <i class="fas fa-gift"></i> KIRIM HADIAH
+                            <i class="fas fa-gift"></i> SEND GIFT
                         </button>
                     </div>
                 </div>
@@ -422,7 +426,7 @@
                 <div class="absolute inset-0 bg-black opacity-50"></div>
                 <div class="relative mx-4 max-h-[90vh] w-full max-w-md overflow-hidden rounded-lg bg-white">
                     <div class="flex p-4">
-                        <p class="font-sacramento text-4xl font-semibold text-primary-golden-brown-400">Hadiah</p>
+                        <p class="font-sacramento text-4xl font-semibold text-primary-golden-brown-400">Gift</p>
                         <button id="close-modal" class="cursor-pointer ml-auto text-3xl font-semibold text-gray-600 hover:text-gray-900">
                             &times;
                         </button>
@@ -496,7 +500,7 @@
 
                 <div class="z-30 relative px-4 py-8 flex flex-col items-center justify-center">
                     <p class="mb-4 mt-6 px-2 text-center font-sacramento text-4xl font-semibold text-primary-golden-brown-400" data-aos="fade-down">
-                        Penutup
+                        Closing
                     </p>
                     <div class="px-2">
                         <div class="mb-4 text-center">

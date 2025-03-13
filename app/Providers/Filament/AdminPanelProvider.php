@@ -23,6 +23,8 @@ use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugi
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Filament\Navigation\MenuItem;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use Filament\Navigation\NavigationItem;
+use Illuminate\Support\Facades\App;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -43,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
                 // 'success' => Color::Green,
                 // 'warning' => Color::Amber,
             ])
-            ->brandName('Undangan')
+            ->brandName(App::make('siteConfigs')['site_name']->value ?? 'Site Name')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -81,8 +83,8 @@ class AdminPanelProvider extends PanelProvider
                         directory: 'avatars',
                         rules: 'mimes:jpeg,png|max:2048'
                     )
+                    ->setSort(1)
                 // ->setNavigationGroup('Group Profile') 
-                // ->setSort(10)
                 // ->canAccess(fn () => auth()->user()->id === 1)
                 // ->shouldRegisterNavigation(false)
                 // ->shouldShowDeleteAccountForm(false)

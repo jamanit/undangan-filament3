@@ -34,7 +34,7 @@ class TemplateResource extends Resource
     protected static ?string $model = Template::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
-    protected static ?int $navigationSort     = 2;
+    protected static ?int $navigationSort     = 3;
 
     public static function form(Form $form): Form
     {
@@ -75,7 +75,6 @@ class TemplateResource extends Resource
                     ->maxSize(2048)
                     ->deleteUploadedFileUsing(function ($file, $record) {
                         Storage::disk('public')->delete($file);
-
                         $record->update([
                             'image' => null,
                         ]);
