@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('gifts', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->nullable();
             $table->foreignId('invitation_id')->constrained('invitations')->onDelete('cascade');
             $table->string('type');
             $table->string('account_name')->nullable();

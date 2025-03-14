@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->$avatarColumn ? Storage::url("$this->$avatarColumn") : null;
     }
 
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
+
     protected static function booted()
     {
         static::deleting(function ($user) {
@@ -99,6 +104,12 @@ class User extends Authenticatable
             }
 
             foreach ($user->invitations as $invitation) {
+                if ($invitation->audio->file) {
+                    Storage::disk('public')->delete($invitation->audio->file);
+                }
+            }
+
+            foreach ($user->invitations as $invitation) {
                 foreach ($invitation->galleries as $gallery) {
                     if ($gallery->photo) {
                         Storage::disk('public')->delete($gallery->photo);
@@ -106,10 +117,5 @@ class User extends Authenticatable
                 }
             }
         });
-    }
-
-    public function invitations()
-    {
-        return $this->hasMany(Invitation::class);
     }
 }

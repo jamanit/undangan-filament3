@@ -14,6 +14,12 @@ class SiteConfig extends Model
 
     protected static function booted()
     {
+        static::creating(function ($siteConfig) {
+            if (!$siteConfig->order) {
+                $siteConfig->order = SiteConfig::max('order') + 1;
+            }
+        });
+
         static::deleting(function ($side_config) {
             // delete files when deleted
             $files = ['file'];

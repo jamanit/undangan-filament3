@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Quote extends Model
+class Audio extends Model
 {
     use HasFactory;
 
@@ -14,17 +14,17 @@ class Quote extends Model
 
     public function invitation()
     {
-        return $this->hasOne(Invitation::class);
+        return $this->belongsTo(Invitation::class);
     }
 
     protected static function booted()
     {
-        static::deleting(function ($quote) {
+        static::deleting(function ($audio) {
             // delete files when deleted
-            $files = ['image_1', 'image_2', 'image_3', 'image_4'];
+            $files = ['file'];
             foreach ($files as $file) {
-                if ($quote->$file) {
-                    Storage::disk('public')->delete($quote->$file);
+                if ($audio->$file) {
+                    Storage::disk('public')->delete($audio->$file);
                 }
             }
         });

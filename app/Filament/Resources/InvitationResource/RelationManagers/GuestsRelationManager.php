@@ -49,6 +49,8 @@ class GuestsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->defaultSort('id', 'desc')
+
             ->recordTitleAttribute('name')
             ->columns([
                 TextColumn::make('name')

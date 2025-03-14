@@ -12,12 +12,19 @@ class Gallery extends Model
 
     protected $guarded = [];
 
-    protected $casts = [
-        'photo' => 'array',
-    ];
+    public function invitation()
+    {
+        return $this->belongsTo(Invitation::class);
+    }
 
     protected static function booted()
     {
+        static::creating(function ($gallery) {
+            if (!$gallery->order) {
+                $gallery->order = Gallery::max('order') + 1;
+            }
+        });
+
         static::deleting(function ($template) {
             // delete files when deleted
             $files = ['photo'];
@@ -27,10 +34,5 @@ class Gallery extends Model
                 }
             }
         });
-    }
-
-    public function invitation()
-    {
-        return $this->belongsTo(Invitation::class);
     }
 }

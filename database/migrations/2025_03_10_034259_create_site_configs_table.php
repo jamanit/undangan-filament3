@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('site_configs', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->nullable();
             $table->string('name');
             $table->string('key');
             $table->string('type');

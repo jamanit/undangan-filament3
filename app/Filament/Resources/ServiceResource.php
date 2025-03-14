@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\InvitationResource\RelationManagers;
+namespace App\Filament\Resources;
 
+use App\Filament\Resources\ServiceResource\Pages;
+use App\Filament\Resources\ServiceResource\RelationManagers;
+use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,59 +25,62 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Support\Facades\Storage;
 use Filament\Tables\Columns\ViewColumn;
 
-class LoveStoriesRelationManager extends RelationManager
+class ServiceResource extends Resource
 {
-    protected static string $relationship = 'loveStories';
+    protected static ?string $model = Service::class;
 
-    public function form(Form $form): Form
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort    = 5;
+
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                TextInput::make('icon')
+                    ->label('Icon')
+                    ->required()
+                    ->string()
+                    ->maxLength(255),
                 TextInput::make('title')
                     ->label('Title')
                     ->required()
                     ->string()
                     ->maxLength(255),
-                RichEditor::make('text')
-                    ->label('Text')
-                    ->required()
+                Textarea::make('caption')
+                    ->label('Caption')
+                    ->nullable()
                     ->string()
-                    ->maxLength(500)
                     ->columnSpanFull()
-                    ->toolbarButtons([
-                        'bold',
-                        'italic',
-                        'underline',
-                        'redo',
-                        'undo',
-                    ]),
+                    ->maxLength('500'),
             ]);
     }
 
-    public function table(Table $table): Table
+    public static function table(Table $table): Table
     {
         return $table
             ->defaultSort('order', 'asc')
             ->reorderable('order')
-
-            ->recordTitleAttribute('title')
             ->columns([
+                TextColumn::make('icon')
+                    ->label('Icon')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('title')
                     ->label('Title')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('text')
-                    ->label('Text')
-                    ->searchable()
+                TextColumn::make('caption')
+                    ->label('Caption')
+                    ->limit(50)
                     ->sortable()
-                    ->limit(20)
-                    ->formatStateUsing(fn($state) => strip_tags($state)),
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
@@ -85,17 +91,29 @@ class LoveStoriesRelationManager extends RelationManager
             ->filters([
                 //
             ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListServices::route('/'),
+            // 'create' => Pages\CreateService::route('/create'),
+            // 'edit' => Pages\EditService::route('/{record}/edit'),
+        ];
     }
 }

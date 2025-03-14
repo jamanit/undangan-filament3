@@ -12,6 +12,66 @@ class Invitation extends Model
 
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function template()
+    {
+        return $this->belongsTo(Template::class);
+    }
+
+    public function weddingCouple()
+    {
+        return $this->hasOne(WeddingCouple::class);
+    }
+
+    public function quote()
+    {
+        return $this->hasOne(Quote::class);
+    }
+
+    public function audio()
+    {
+        return $this->hasOne(Audio::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function loveStories()
+    {
+        return $this->hasMany(LoveStory::class);
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
+    public function streamings()
+    {
+        return $this->hasMany(Streaming::class);
+    }
+
+    public function gifts()
+    {
+        return $this->hasMany(Gift::class);
+    }
+
+    public function guests()
+    {
+        return $this->hasMany(Guest::class);
+    }
+
     protected static function booted()
     {
         static::creating(function ($model) {
@@ -50,66 +110,15 @@ class Invitation extends Model
                 Storage::disk('public')->delete($invitation->quote->image_4);
             }
 
+            if ($invitation->audio->file) {
+                Storage::disk('public')->delete($invitation->audio->file);
+            }
+
             foreach ($invitation->galleries as $gallery) {
                 if ($gallery->photo) {
                     Storage::disk('public')->delete($gallery->photo);
                 }
             }
         });
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function template()
-    {
-        return $this->belongsTo(Template::class);
-    }
-
-    public function weddingCouple()
-    {
-        return $this->hasOne(WeddingCouple::class);
-    }
-
-    public function quote()
-    {
-        return $this->hasOne(Quote::class);
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
-    public function events()
-    {
-        return $this->hasMany(Event::class);
-    }
-
-    public function loveStories()
-    {
-        return $this->hasMany(LoveStory::class);
-    }
-
-    public function galleries()
-    {
-        return $this->hasMany(Gallery::class);
-    }
-
-    public function streamings()
-    {
-        return $this->hasMany(Streaming::class);
-    }
-
-    public function gifts()
-    {
-        return $this->hasMany(Gift::class);
-    }
-
-    public function guests()
-    {
-        return $this->hasMany(Guest::class);
     }
 }

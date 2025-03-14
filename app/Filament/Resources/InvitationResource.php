@@ -34,6 +34,7 @@ use App\Models\User;
 use App\Models\Template;
 use App\Filament\Forms\WeddingCoupleForm;
 use App\Filament\Forms\QuoteForm;
+use App\Filament\Forms\AudioForm;
 
 class InvitationResource extends Resource
 {
@@ -99,6 +100,11 @@ class InvitationResource extends Resource
                         Tabs\Tab::make('Quote')
                             ->icon('heroicon-o-chat-bubble-bottom-center-text')
                             ->schema(QuoteForm::schema()),
+
+                        // AUDIO
+                        Tabs\Tab::make('Audio')
+                            ->icon('heroicon-o-musical-note')
+                            ->schema(AudioForm::schema()),
                     ])
                     ->activeTab(0)
                     ->columnSpanFull()
@@ -109,6 +115,7 @@ class InvitationResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('id', 'desc')
             ->columns([
                 TextColumn::make('user.name')
                     ->label('User')

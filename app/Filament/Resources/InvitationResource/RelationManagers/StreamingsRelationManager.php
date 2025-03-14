@@ -47,6 +47,9 @@ class StreamingsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->defaultSort('order', 'asc')
+            ->reorderable('order')
+
             ->recordTitleAttribute('youtube_url')
             ->columns([
                 TextColumn::make('youtube_url')

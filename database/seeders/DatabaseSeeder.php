@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             RolePermissionSeeder::class,
             TemplateSeeder::class,
             InvitationSeeder::class,
+            ServiceSeeder::class,
         ]);
     }
 }

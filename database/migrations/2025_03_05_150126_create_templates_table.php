@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('templates', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->nullable();
             $table->string('name');
             $table->string('parameter')->unique();
             $table->string('type');

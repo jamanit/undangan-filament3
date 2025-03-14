@@ -148,6 +148,8 @@ class SiteConfigResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('order', 'asc')
+            ->reorderable('order')
             ->columns([
                 TextColumn::make('name')
                     ->label('Name')
@@ -177,12 +179,6 @@ class SiteConfigResource extends Resource
 
                         return null;
                     }),
-                TextColumn::make('created_at')
-                    ->label('Created At')
-                    ->dateTime()
-                    ->since()
-                    ->sortable()
-                    ->searchable(),
             ])
             ->filters([
                 //

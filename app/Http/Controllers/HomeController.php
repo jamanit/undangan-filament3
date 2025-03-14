@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invitation;
+use App\Models\Service;
 use App\Models\Template;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $services = Service::get();
         $templates = Template::where('status', 'Publish')->orderBy('id', 'desc')->limit('6')->get();
 
-        return view('index', compact('templates'));
+        return view('index', compact('services', 'templates'));
     }
 
     public function template()

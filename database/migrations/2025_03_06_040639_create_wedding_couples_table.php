@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('wedding_couples', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->nullable();
             $table->foreignId('invitation_id')->constrained('invitations')->onDelete('cascade');
             $table->string('bride_photo')->nullable();
             $table->string('bride_full_name');

@@ -70,6 +70,8 @@ class EventsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->defaultSort('event_date', 'asc')
+
             ->recordTitleAttribute('type')
             ->columns([
                 TextColumn::make('type')

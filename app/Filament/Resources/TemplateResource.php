@@ -39,6 +39,7 @@ class TemplateResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->defaultSort('id', 'desc')
             ->schema([
                 TextInput::make('name')
                     ->label('Name')

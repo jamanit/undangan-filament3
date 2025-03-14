@@ -57,6 +57,9 @@ class GalleriesRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->defaultSort('order', 'asc')
+            ->reorderable('order')
+
             ->recordTitleAttribute('photo')
             ->columns([
                 ImageColumn::make('photo')

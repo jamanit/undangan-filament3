@@ -5,7 +5,7 @@
 @section('content')
     <div class="flex items-center justify-end bg-primary-golden-brown-400">
         <!-- bottom footer -->
-        @include('templates.floral.bottom-footer', ['primary_color' => 'primary-golden-brown'])
+        @include('templates.floral.bottom-footer', ['color' => 'primary-golden-brown'])
 
         <!-- main background -->
         <div class="z-0 lg:w-1/3 fixed bottom-0 right-0 h-screen w-full">
@@ -523,7 +523,7 @@
             </section>
 
             <!-- footer -->
-            @include('templates.floral.footer', ['primary_color' => 'primary-golden-brown'])
+            @include('templates.floral.footer', ['color' => 'primary-golden-brown'])
 
         </div>
     </div>

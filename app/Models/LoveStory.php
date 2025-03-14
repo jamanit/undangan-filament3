@@ -15,4 +15,13 @@ class LoveStory extends Model
     {
         return $this->belongsTo(Invitation::class);
     }
+
+    protected static function booted()
+    {
+        static::creating(function ($loveStory) {
+            if (!$loveStory->order) {
+                $loveStory->order = LoveStory::max('order') + 1;
+            }
+        });
+    }
 }

@@ -10,14 +10,14 @@
             @endif
             <div class="container relative">
                 <div class="grid md:grid-cols-12 grid-cols-1 items-center mt-10 gap-[30px]">
-                    <div class="md:col-span-7">
+                    <div class="md:col-span-8">
                         <div class="me-6">
                             <h4 class="font-semibold lg:leading-normal leading-normal text-3xl lg:text-5xl text-white">{!! $siteConfigs['title_banner']->value ?? '' !!}</h4>
                             <div class="mt-5 text-white/70 text-lg max-w-xl">{!! $siteConfigs['caption_banner']->value ?? '' !!}</div>
                         </div>
                     </div>
 
-                    <div class="md:col-span-5">
+                    <div class="md:col-span-4">
                         @if ($siteConfigs['hero_banner']->file)
                             <img loading="lazy" src="{{ Storage::url($siteConfigs['hero_banner']->file) }}" alt="">
                         @endif
@@ -41,61 +41,25 @@
                 </div>
 
                 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
-                        <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
-                                <i class="uil uil-server"></i>
+                    @if ($templates->isEmpty())
+                        <p class="text-center text-slate-400 max-w-xl mx-auto">Data is not yet available.</p>
+                    @else
+                        @foreach ($services as $service)
+                            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
+                                <div class="relative overflow-hidden text-transparent -m-3">
+                                    <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
+                                    <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                        <i class="{{ $service->icon }}"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6">
+                                    <h5><a href="" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">{{ $service->title }}</a></h5>
+                                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">{!! $service->caption !!}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="mt-6">
-                            <h5><a href="" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Web Hosting</a></h5>
-                            <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
-                        </div>
-                    </div>
-
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
-                        <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
-                                <i class="uil uil-cloud-heart"></i>
-                            </div>
-                        </div>
-
-                        <div class="mt-6">
-                            <h5><a href="" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Domains</a></h5>
-                            <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
-                        </div>
-                    </div>
-
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
-                        <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
-                                <i class="uil uil-envelope-check"></i>
-                            </div>
-                        </div>
-
-                        <div class="mt-6">
-                            <h5><a href="" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Emails</a></h5>
-                            <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
-                        </div>
-                    </div>
-
-                    <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
-                        <div class="relative overflow-hidden text-transparent -m-3">
-                            <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
-                            <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
-                                <i class="uil uil-users-alt"></i>
-                            </div>
-                        </div>
-
-                        <div class="mt-6">
-                            <h5><a href="" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Supported</a></h5>
-                            <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
 
@@ -107,7 +71,7 @@
                 </div>
 
                 @if ($templates->isEmpty())
-                    <p class="text-center text-slate-400 max-w-xl mx-auto">Template is not yet available.</p>
+                    <p class="text-center text-slate-400 max-w-xl mx-auto">Data is not yet available.</p>
                 @else
                     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
                         @foreach ($templates as $template)

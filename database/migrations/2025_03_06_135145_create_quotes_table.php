@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->nullable();
             $table->foreignId('invitation_id')->constrained('invitations')->onDelete('cascade');
             $table->text('text');
             $table->string('image_1')->nullable();

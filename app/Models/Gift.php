@@ -18,6 +18,12 @@ class Gift extends Model
 
     protected static function booted()
     {
+        static::creating(function ($gift) {
+            if (!$gift->order) {
+                $gift->order = Gift::max('order') + 1;
+            }
+        });
+
         static::saving(function ($model) {
             if ($model->type === 'Rekening') {
                 $model->recipient_name = null;

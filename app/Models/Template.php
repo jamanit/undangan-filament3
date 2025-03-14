@@ -12,6 +12,11 @@ class Template extends Model
 
     protected $guarded = [];
 
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
+
     protected static function booted()
     {
         static::deleting(function ($template) {
@@ -23,10 +28,5 @@ class Template extends Model
                 }
             }
         });
-    }
-
-    public function invitations()
-    {
-        return $this->hasMany(Invitation::class);
     }
 }
