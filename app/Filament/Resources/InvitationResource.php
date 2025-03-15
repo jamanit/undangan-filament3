@@ -19,16 +19,22 @@ use Filament\Forms\Components\Wizard;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Group;
-
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\DatePicker;
+
 use Filament\Tables\Columns\ViewColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Template;
@@ -76,11 +82,10 @@ class InvitationResource extends Resource
                     )
                     ->preload()
                     ->searchable(),
-                TextInput::make('expired_date')
+                DatePicker::make('expired_date')
                     ->label('Expired Date')
                     ->required()
-                    ->type('date')
-                    ->string(),
+                    ->native(false),
                 Select::make('status')
                     ->label('Status')
                     ->required()
@@ -178,7 +183,7 @@ class InvitationResource extends Resource
     {
         return [
             'index'  => Pages\ListInvitations::route('/'),
-            'create' => Pages\CreateInvitation::route('/create'),
+            // 'create' => Pages\CreateInvitation::route('/create'),
             'edit'   => Pages\EditInvitation::route('/{record}/edit'),
         ];
     }

@@ -34,6 +34,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceResource extends Resource
 {

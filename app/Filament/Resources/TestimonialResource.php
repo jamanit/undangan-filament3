@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TemplateResource\Pages;
-use App\Filament\Resources\TemplateResource\RelationManagers;
-use App\Models\Template;
+use App\Filament\Resources\TestimonialResource\Pages;
+use App\Filament\Resources\TestimonialResource\RelationManagers;
+use App\Models\Testimonial;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -36,12 +36,12 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Auth;
 
-class TemplateResource extends Resource
+class TestimonialResource extends Resource
 {
-    protected static ?string $model = Template::class;
+    protected static ?string $model = Testimonial::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
-    protected static ?int $navigationSort     = 3;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort    = 6;
 
     public static function form(Form $form): Form
     {
@@ -52,18 +52,19 @@ class TemplateResource extends Resource
                     ->required()
                     ->string()
                     ->maxLength(255),
-                TextInput::make('parameter')
-                    ->label('Parameter')
+                Textarea::make('text')
+                    ->label('Text')
                     ->required()
                     ->string()
-                    ->maxLength(255)
-                    ->unique(ignoreRecord: true),
-                Select::make('type')
-                    ->label('Type')
+                    ->columnSpanFull()
+                    ->maxLength('500'),
+                TextInput::make('star')
+                    ->label('Star')
                     ->required()
-                    ->options([
-                        'Undangan Pernikahan'   => 'Undangan Pernikahan',
-                    ]),
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(5)
+                    ->placeholder('Enter a number between 1 and 5'),
                 Select::make('status')
                     ->label('Status')
                     ->required()
@@ -71,21 +72,6 @@ class TemplateResource extends Resource
                         'Publish'    => 'Publish',
                         'Inpublish'  => 'Inpublish',
                     ]),
-                FileUpload::make('image')
-                    ->label('Image')
-                    ->required()
-                    ->image()
-                    ->directory('templates')
-                    ->disk('public')
-                    ->enableOpen()
-                    // ->enableDownload()
-                    ->maxSize(2048)
-                    ->deleteUploadedFileUsing(function ($file, $record) {
-                        Storage::disk('public')->delete($file);
-                        $record->update([
-                            'image' => null,
-                        ]);
-                    }),
             ]);
     }
 
@@ -98,14 +84,15 @@ class TemplateResource extends Resource
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('parameter')
-                    ->label('Parameter')
+                TextColumn::make('text')
+                    ->label('Text')
+                    ->limit(50)
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('type')
-                    ->label('Type')
-                    ->sortable()
-                    ->searchable(),
+                TextColumn::make('star')
+                    ->label('Star')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('status')
                     ->label('Status')
                     ->sortable()
@@ -115,28 +102,11 @@ class TemplateResource extends Resource
                         'Publish'   => 'success',
                         'Inpublish' => 'gray',
                     }),
-                ImageColumn::make('image')
-                    ->label('Image')
-                    ->width(50)
-                    ->height(50)
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->label('Created At')
-                    ->dateTime()
-                    ->since()
-                    ->sortable()
-                    ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\Action::make('seeTemplate')
-                    ->label('View Template')
-                    ->icon('heroicon-o-eye')
-                    ->url(fn($record) => url('/templates/show/' . $record->parameter))
-                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -156,9 +126,9 @@ class TemplateResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTemplates::route('/'),
-            // 'create' => Pages\CreateTemplate::route('/create'),
-            // 'edit' => Pages\EditTemplate::route('/{record}/edit'),
+            'index' => Pages\ListTestimonials::route('/'),
+            // 'create' => Pages\CreateTestimonial::route('/create'),
+            // 'edit' => Pages\EditTestimonial::route('/{record}/edit'),
         ];
     }
 }

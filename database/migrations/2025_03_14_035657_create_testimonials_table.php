@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('text');
+            $table->integer('star');
+            $table->enum('status', ['Publish', 'Inpublish'])->default('Publish');
             $table->timestamps();
         });
     }
