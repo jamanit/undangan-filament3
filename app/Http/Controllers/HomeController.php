@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $services = Service::get();
+        $services = Service::orderBy('order', 'asc')->get();
         $templates = Template::where('status', 'Publish')->orderBy('id', 'desc')->limit('6')->get();
 
         return view('index', compact('services', 'templates'));

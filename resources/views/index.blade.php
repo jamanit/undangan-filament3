@@ -47,12 +47,13 @@
                         @foreach ($services as $service)
                             <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:!bg-{{ $primary_color }}-500 dark:hover:bg-{{ $primary_color }}-500 transition-all duration-500 ease-in-out rounded-md bg-white dark:bg-slate-800 overflow-hidden">
                                 <div class="relative overflow-hidden text-transparent -m-3">
-                                    <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
-                                    <div class="absolute top-2/4 -translate-y-2/4 start-8 text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
-                                        <i class="{{ $service->icon }}"></i>
+                                    <div class="w-24 h-24 flex items-center justify-center">
+                                        <i data-feather="hexagon" class="h-24 w-24 fill-{{ $primary_color }}-500/[0.07] group-hover:fill-white/20"></i>
+                                        <div class="absolute text-{{ $primary_color }}-500 rounded-md group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                            <i class="{{ $service->icon }}"></i>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <div class="mt-6">
                                     <h5><a href="" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">{{ $service->title }}</a></h5>
                                     <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">{!! $service->caption !!}</p>

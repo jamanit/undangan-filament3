@@ -6,46 +6,6 @@
 
     <div class="relative">
         <div class="container">
-            <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
-                <div class="lg:col-span-7 md:col-span-6">
-                    <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/contact.svg" alt="">
-                </div>
-
-                <div class="lg:col-span-5 md:col-span-6">
-                    <div class="lg:ms-5">
-                        <div class="bg-white dark:bg-slate-800 rounded-md shadow dark:shadow-gray-700 p-6">
-                            <h3 class="mb-6 text-2xl leading-normal font-medium">Get in touch !</h3>
-
-                            <form method="post" name="myForm" id="myForm" onsubmit="return validateForm()">
-                                <p class="mb-0" id="error-msg"></p>
-                                <div id="simple-msg"></div>
-                                <div class="grid grid-cols-1">
-                                    <div class="lg:col-span-6 mb-5">
-                                        <label for="name" class="font-medium">Your Name:</label>
-                                        <input name="name" id="name" type="text" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-{{ $primary_color }}-500 dark:border-gray-800 dark:focus:border-{{ $primary_color }}-500 focus:ring-0 mt-2" placeholder="Name :">
-                                    </div>
-
-                                    <div class="lg:col-span-6 mb-5">
-                                        <label for="email" class="font-medium">Your Email:</label>
-                                        <input name="email" id="email" type="email" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-{{ $primary_color }}-500 dark:border-gray-800 dark:focus:border-{{ $primary_color }}-500 focus:ring-0 mt-2" placeholder="Email :">
-                                    </div>
-
-                                    <div class="mb-5">
-                                        <label for="comments" class="font-medium">Your Comment:</label>
-                                        <textarea name="comments" id="comments" class="form-input w-full text-[15px] py-2 px-3 h-28 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-{{ $primary_color }}-500 dark:border-gray-800 dark:focus:border-{{ $primary_color }}-500 focus:ring-0 mt-2" placeholder="Message :"></textarea>
-                                    </div>
-                                </div>
-                                <button type="submit" id="submit" name="send"
-                                    class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-{{ $primary_color }}-500 hover:bg-{{ $primary_color }}-600 border border-{{ $primary_color }}-500 hover:border-{{ $primary_color }}-600 text-white focus:ring-[3px] focus:ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">Send
-                                    Message</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
                 @if ($siteConfigs['website_url']->value)
                     <div class="flex items-center gap-4">
@@ -207,6 +167,46 @@
                         </div>
                     </div>
                 @endif
+            </div>
+        </div>
+
+        <div class="container mt-6">
+            <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+                <div class="lg:col-span-7 md:col-span-6">
+                    <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/contact.svg" alt="">
+                </div>
+
+                <div class="lg:col-span-5 md:col-span-6">
+                    <div class="lg:ms-5">
+                        <div class="bg-white dark:bg-slate-800 rounded-md shadow dark:shadow-gray-700 p-6">
+                            <h3 class="mb-6 text-2xl leading-normal font-medium">Get in touch !</h3>
+
+                            <form method="post" name="myForm" id="myForm" onsubmit="return validateForm()">
+                                <p class="mb-0" id="error-msg"></p>
+                                <div id="simple-msg"></div>
+                                <div class="grid grid-cols-1">
+                                    <div class="lg:col-span-6 mb-5">
+                                        <label for="name" class="font-medium">Your Name:</label>
+                                        <input name="name" id="name" type="text" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-{{ $primary_color }}-500 dark:border-gray-800 dark:focus:border-{{ $primary_color }}-500 focus:ring-0 mt-2" placeholder="Name :">
+                                    </div>
+
+                                    <div class="lg:col-span-6 mb-5">
+                                        <label for="email" class="font-medium">Your Email:</label>
+                                        <input name="email" id="email" type="email" class="form-input w-full text-[15px] py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-{{ $primary_color }}-500 dark:border-gray-800 dark:focus:border-{{ $primary_color }}-500 focus:ring-0 mt-2" placeholder="Email :">
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="comments" class="font-medium">Your Comment:</label>
+                                        <textarea name="comments" id="comments" class="form-input w-full text-[15px] py-2 px-3 h-28 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-lg outline-none border border-gray-200 focus:border-{{ $primary_color }}-500 dark:border-gray-800 dark:focus:border-{{ $primary_color }}-500 focus:ring-0 mt-2" placeholder="Message :"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" id="submit" name="send"
+                                    class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-{{ $primary_color }}-500 hover:bg-{{ $primary_color }}-600 border border-{{ $primary_color }}-500 hover:border-{{ $primary_color }}-600 text-white focus:ring-[3px] focus:ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500">Send
+                                    Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
