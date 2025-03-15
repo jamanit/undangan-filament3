@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testimonials', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->integer('order')->nullable();
-            $table->string('name');
-            $table->text('text');
-            $table->integer('star');
-            $table->enum('status', ['Publish', 'Inpublish'])->default('Publish');
+            $table->string('title');
+            $table->integer('price');
+            $table->string('discount')->nullable();
+            $table->text('description')->nullable();
+            $table->enum('popular_label', ['Yes', 'No'])->default('No');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('testimonials');
+        Schema::dropIfExists('prices');
     }
 };

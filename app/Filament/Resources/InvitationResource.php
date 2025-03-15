@@ -47,7 +47,7 @@ class InvitationResource extends Resource
     protected static ?string $model = Invitation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?int $navigationSort    = 4;
+    protected static ?int $navigationSort    = 7;
 
     public static function form(Form $form): Form
     {

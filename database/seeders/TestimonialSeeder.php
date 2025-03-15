@@ -15,7 +15,25 @@ class TestimonialSeeder extends Seeder
     {
         $data = [
             [
-                'name'   => 'Name',
+                'name'   => 'Name 1',
+                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'star'   => 5,
+                'status' => 'Publish',
+            ],
+            [
+                'name'   => 'Name 2',
+                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'star'   => 5,
+                'status' => 'Publish',
+            ],
+            [
+                'name'   => 'Name 3',
+                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'star'   => 5,
+                'status' => 'Publish',
+            ],
+            [
+                'name'   => 'Name 4',
                 'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
                 'star'   => 5,
                 'status' => 'Publish',

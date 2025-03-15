@@ -114,82 +114,29 @@
                 </div>
 
                 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-[30px]">
-                    <div class="group p-6 relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
-                        <h6 class="font-medium mb-5 text-xl">Free</h6>
+                    @foreach ($prices as $price)
+                        <div class="group relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
+                            @if ($price->popular_label == 'Yes')
+                                <div class="bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700 text-white py-2 px-6 h6 text-lg font-medium">Popular</div>
+                            @endif
+                            <div class="p-6">
+                                <h6 class="font-medium mb-5 text-xl">{{ $price->title }}</h6>
 
-                        <div class="flex mb-5">
-                            <span class="text-lg font-medium">$</span>
-                            <span class="price text-5xl h6 font-semibold mb-0">0</span>
-                            <span class="text-lg font-medium self-end mb-1">/mo</span>
-                        </div>
+                                <div class="flex mb-5">
+                                    <span class="text-lg font-medium">Rp</span>
+                                    <span class="price text-4xl h6 font-semibold mb-0 ml-1">{{ number_format($price->price, 0, ',', '.') }}</span>
+                                </div>
 
-                        <ul class="list-none text-slate-400">
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free month of service for new customers.</span></li>
-                        </ul>
-                        <a href=""
-                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-{{ $primary_color }}-500 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Free
-                            Demo</a>
-                    </div>
-
-                    <div class="group p-6 relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
-                        <h6 class="font-medium mb-5 text-xl">Single</h6>
-
-                        <div class="flex mb-5">
-                            <span class="text-lg font-medium">$</span>
-                            <span class="price text-5xl h6 font-semibold mb-0">9</span>
-                            <span class="text-lg font-medium self-end mb-1">/mo</span>
-                        </div>
-
-                        <ul class="list-none text-slate-400">
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free 7 days of service for new customers.</span></li>
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Our Talented & Experienced Marketing Agency</span></li>
-                        </ul>
-                        <a href=""
-                            class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-{{ $primary_color }}-500 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Subscribe
-                            Now</a>
-                    </div>
-
-                    <div class="group relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
-                        <div class="bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700 text-white py-2 px-6 h6 text-lg font-medium">Popular</div>
-                        <div class="p-6">
-                            <h6 class="font-medium mb-5 text-xl">Professional</h6>
-
-                            <div class="flex mb-5">
-                                <span class="text-lg font-medium">$</span>
-                                <span class="price text-5xl h6 font-semibold mb-0">49</span>
-                                <span class="text-lg font-medium self-end mb-1">/mo</span>
+                                <div class="text-slate-400">
+                                    {!! $price->description !!}
+                                </div>
+                                {{-- <a href=""
+                                    class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide !bg-{{ $primary_color }}-500 hover:!bg-{{ $primary_color }}-600 border !border-{{ $primary_color }}-500 hover:!border-{{ $primary_color }}-600 text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Buy
+                                    Now</a> --}}
+                                {{-- <p class="text-sm text-slate-400 mt-1.5"><span class="text-red-600">*</span>T&C Apply</p> --}}
                             </div>
-
-                            <ul class="list-none text-slate-400">
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">We offers a free 14 days of service for new customers.</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Full Access</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Source Files</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Free Appointments</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Enhanced Security</span></li>
-                                <li class="mb-1 flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-0.5">Free Installment</span></li>
-                            </ul>
-                            <a href=""
-                                class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide !bg-{{ $primary_color }}-500 hover:!bg-{{ $primary_color }}-600 border !border-{{ $primary_color }}-500 hover:!border-{{ $primary_color }}-600 text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Buy
-                                Now</a>
-
-                            <p class="text-sm text-slate-400 mt-1.5"><span class="text-red-600">*</span>T&C Apply</p>
                         </div>
-                    </div>
-
-                    <div class="group p-[1px] relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700 h-fit">
-                        <div class="p-6 bg-white dark:bg-slate-800 rounded-md">
-                            <h6 class="font-medium mb-5 text-xl">Custom</h6>
-
-                            <p class="text-slate-400 mb-5">Pricing plan will be as per client or company requirements</p>
-
-                            <ul class="list-none">
-                                <li class="mb-1 font-medium flex"><i class="uil uil-check-circle text-{{ $primary_color }}-500 text-[20px] align-middle me-2"></i> <span class="mt-1">Custom Pricing</span></li>
-                            </ul>
-                            <a href=""
-                                class="inline-block px-8 py-2.5 text-[16px] font-medium tracking-wide bg-transparent hover:!bg-{{ $primary_color }}-500 border border-gray-100 dark:border-gray-800 hover:!border-{{ $primary_color }}-500 dark:hover:!border-{{ $primary_color }}-500 text-slate-900 dark:text-white hover:text-white focus:ring-[3px] focus:!ring-{{ $primary_color }}-500 focus:ring-opacity-25 focus:outline-none rounded-md text-center align-middle transition-all duration-500 w-full mt-5">Talk
-                                to us</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -204,101 +151,29 @@
                 <div class="container relative">
                     <div class="grid grid-cols-1 relative">
                         <div class="tiny-three-item">
-                            <div class="tiny-slide">
-                                <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
-                                    <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
+                            @foreach ($testimonials as $testimonial)
+                                <div class="tiny-slide">
+                                    <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
+                                        <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
+                                            <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
 
-                                        <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Thomas Israel</a>
-                                            <p class="text-slate-400">C.E.O</p>
+                                            <div class="ps-4">
+                                                <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">{{ $testimonial->name }}</a>
+                                                <p class="text-slate-400  text-xs">{{ $testimonial->created_at->diffForHumans() }}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-6">
+                                            <p class="text-slate-400">{!! $testimonial->text !!}</p>
+                                            <ul class="list-none mb-0 text-amber-400 mt-2">
+                                                @for ($i = 0; $i < $testimonial->star; $i++)
+                                                    <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                @endfor
+                                            </ul>
                                         </div>
                                     </div>
-
-                                    <div class="mt-6">
-                                        <p class="text-slate-400">I didn't know a thing about icon design until I read this book. Now I can create any icon I need in no time. Great resource!</p>
-                                        <ul class="list-none mb-0 text-amber-400 mt-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
-                                    <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/05.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
-
-                                        <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Barbara McIntosh</a>
-                                            <p class="text-slate-400">C.E.O</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-6">
-                                        <p class="text-slate-400">There are so many things I had to do with my old software that I just don't do at all with Techwind. Suspicious but I can't say I don't love it.</p>
-                                        <ul class="list-none mb-0 text-amber-400 mt-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
-                                    <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/02.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
-
-                                        <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Carl Oliver</a>
-                                            <p class="text-slate-400">C.E.O</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-6">
-                                        <p class="text-slate-400">The best part about Techwind is every time I pay my employees, my bank balance doesn't go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.</p>
-                                        <ul class="list-none mb-0 text-amber-400 mt-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
-                                    <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/04.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
-
-                                        <div class="ps-4">
-                                            <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">Jill Webb</a>
-                                            <p class="text-slate-400">C.E.O</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-6">
-                                        <p class="text-slate-400">I'm trying to get a hold of someone in support, I'm in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.</p>
-                                        <ul class="list-none mb-0 text-amber-400 mt-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
