@@ -18,6 +18,7 @@ class InboxSeeder extends Seeder
                 'name'    => 'User',
                 'email'   => 'user@gmail.com',
                 'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, eveniet. Inventore quo eius facere quae quaerat distinctio nesciunt porro rerum reiciendis veritatis, quos doloribus quis omnis harum ipsum provident. Reprehenderit.',
+                'status'  => false,
             ],
         ];
 

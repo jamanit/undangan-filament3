@@ -79,8 +79,8 @@ class PriceResource extends Resource
                     ->label('Popular Label')
                     ->required()
                     ->options([
-                        'Yes' => 'Yes',
-                        'No'  => 'No',
+                        true => 'Yes',
+                        false => 'No',
                     ]),
             ]);
     }
@@ -119,10 +119,8 @@ class PriceResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'Yes' => 'success',
-                        'No'  => 'gray',
-                    }),
+                    ->color(fn(bool $state): string => $state ? 'success' : 'gray')
+                    ->formatStateUsing(fn(bool $state): string => $state ? 'Yes' : 'No'),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->sortable()

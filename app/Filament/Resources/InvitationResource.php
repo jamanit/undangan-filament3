@@ -49,6 +49,11 @@ class InvitationResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static ?int $navigationSort    = 7;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', 'Active')->count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -121,6 +126,10 @@ class InvitationResource extends Resource
     {
         return $table
             ->defaultSort('id', 'desc')
+            // ->deferLoading()
+            // ->modifyQueryUsing(function (Builder $query) {
+            //     return $query->where('id', 1);
+            // })
             ->columns([
                 TextColumn::make('user.name')
                     ->label('User')

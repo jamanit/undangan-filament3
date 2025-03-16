@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('parameter')->unique();
             $table->string('type');
-            $table->enum('status', ['Publish', 'Inpublish'])->default('Publish');
+            $table->boolean('status')->default(false);
             $table->string('image')->nullable();
             $table->timestamps();
         });

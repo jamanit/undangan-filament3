@@ -69,8 +69,8 @@ class TestimonialResource extends Resource
                     ->label('Status')
                     ->required()
                     ->options([
-                        'Publish'    => 'Publish',
-                        'Inpublish'  => 'Inpublish',
+                        true  => 'Publish',
+                        false => 'Inpublish',
                     ]),
             ]);
     }
@@ -98,10 +98,8 @@ class TestimonialResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'Publish'   => 'success',
-                        'Inpublish' => 'gray',
-                    }),
+                    ->color(fn(bool $state): string => $state ? 'success' : 'gray')
+                    ->formatStateUsing(fn(bool $state): string => $state ? 'Publish' : 'Inpublish'),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->sortable()

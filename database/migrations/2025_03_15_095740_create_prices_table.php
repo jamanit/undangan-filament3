@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('discount')->nullable();
             $table->text('description')->nullable();
-            $table->enum('popular_label', ['Yes', 'No'])->default('No');
+            $table->boolean('popular_label')->default(false);
             $table->timestamps();
         });
     }

@@ -152,6 +152,7 @@ class SiteConfigResource extends Resource
         return $table
             ->defaultSort('order', 'asc')
             ->reorderable('order')
+            ->paginated(false)
             ->columns([
                 TextColumn::make('name')
                     ->label('Name')

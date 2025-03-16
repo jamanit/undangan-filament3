@@ -20,9 +20,9 @@ class HomeController extends Controller
     public function index()
     {
         $services     = Service::orderBy('order', 'asc')->get();
-        $testimonials = Testimonial::orderBy('id', 'desc')->get();
+        $testimonials = Testimonial::where('status', true)->orderBy('id', 'desc')->get();
         $prices       = Price::orderBy('order', 'asc')->get();
-        $templates    = Template::where('status', 'Publish')->orderBy('id', 'desc')->limit('6')->get();
+        $templates    = Template::where('status', true)->orderBy('id', 'desc')->limit('6')->get();
 
         return view('index', compact('services', 'testimonials', 'prices', 'templates'));
     }

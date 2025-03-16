@@ -43,6 +43,11 @@ class InboxResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-inbox';
     protected static ?int $navigationSort    = 8;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', 0)->count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -92,6 +97,13 @@ class InboxResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->limit(50),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->sortable()
+                    ->searchable()
+                    ->badge()
+                    ->color(fn(bool $state): string => $state ? 'gray' : 'success')
+                    ->formatStateUsing(fn(bool $state): string => $state ? 'Viewed' : 'New'),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->sortable()
@@ -104,7 +116,14 @@ class InboxResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->mutateRecordDataUsing(function (array $data, Inbox $record): array {
+                        if ($data['status'] === 0) {
+                            $data['status'] = 1;
+                            $record->update(['status' => 1]);
+                        }
+                        return $data;
+                    })
                 // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

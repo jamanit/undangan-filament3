@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('text');
             $table->integer('star');
-            $table->enum('status', ['Publish', 'Inpublish'])->default('Publish');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

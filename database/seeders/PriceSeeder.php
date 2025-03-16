@@ -20,7 +20,7 @@ class PriceSeeder extends Seeder
                 'price'         => 70000,
                 'discount'      => null,
                 'description'   => '<p>Pilihan hemat untuk undangan yang praktis dan elegan.</p>',
-                'popular_label' => 'Yes',
+                'popular_label' => true,
             ],
             [
                 'order'         => 2,
@@ -28,7 +28,7 @@ class PriceSeeder extends Seeder
                 'price'         => 90000,
                 'discount'      => '10%',
                 'description'   => '<p>Undangan eksklusif dengan pengalaman yang lebih berkesan.</p>',
-                'popular_label' => 'No',
+                'popular_label' => false,
             ],
         ];
 

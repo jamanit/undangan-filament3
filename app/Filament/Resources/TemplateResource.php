@@ -68,8 +68,8 @@ class TemplateResource extends Resource
                     ->label('Status')
                     ->required()
                     ->options([
-                        'Publish'    => 'Publish',
-                        'Inpublish'  => 'Inpublish',
+                        true  => 'Publish',
+                        false => 'Inpublish',
                     ]),
                 FileUpload::make('image')
                     ->label('Image')
@@ -111,10 +111,8 @@ class TemplateResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'Publish'   => 'success',
-                        'Inpublish' => 'gray',
-                    }),
+                    ->color(fn(bool $state): string => $state ? 'success' : 'gray')
+                    ->formatStateUsing(fn(bool $state): string => $state ? 'Publish' : 'Inpublish'),
                 ImageColumn::make('image')
                     ->label('Image')
                     ->sortable()
