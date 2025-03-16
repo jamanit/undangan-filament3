@@ -17,7 +17,7 @@ class PriceSeeder extends Seeder
             [
                 'order'         => 1,
                 'title'         => 'Reguler',
-                'price'         => 10000,
+                'price'         => 70000,
                 'discount'      => '10%',
                 'description'   => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit corrupti at illum ducimus, dolores enim architecto corporis minima quibusdam ratione ipsam animi porro. Rerum incidunt optio maiores mollitia quas aliquid?</p>',
                 'popular_label' => 'Yes',
@@ -25,7 +25,7 @@ class PriceSeeder extends Seeder
             [
                 'order'         => 2,
                 'title'         => 'Premium',
-                'price'         => 80000,
+                'price'         => 90000,
                 'discount'      => null,
                 'description'   => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit corrupti at illum ducimus, dolores enim architecto corporis minima quibusdam ratione ipsam animi porro. Rerum incidunt optio maiores mollitia quas aliquid?</p>',
                 'popular_label' => 'No',

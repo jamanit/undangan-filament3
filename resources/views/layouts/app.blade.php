@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $siteConfigs['site_name']->value ?? 'Site Name' }}{{ isset($title) ? ' - ' . $title : '' }}</title>
     <meta name="description" content="Tailwind CSS Web Hosting Template">
     <meta name="keywords" content="creative, modern, Tailwind CSS, multipurpose, clean, cloud hosting, creative hosting, dedicated hosting, email hosting, hosting, html5, modern, reseller hosting, sass, server hosting, service, shop, startup hosting, web hosting">
@@ -26,6 +27,7 @@
     <link href="{{ asset('/') }}assets/hoxia-v1/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('/') }}assets/hoxia-v1/css/tailwind.css">
     <link href="{{ asset('/') }}assets/fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
+    <script src="{{ asset('/') }}assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('/') }}assets/tailwindcss/cdn-tailwindcss-3.3.3.js"></script>
     @stack('styles')
 
@@ -109,6 +111,7 @@
     <!-- LTR & RTL Mode Code -->
 
     <!-- JAVASCRIPTS -->
+    <script src="{{ asset('/') }}assets/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('/') }}assets/hoxia-v1/libs/tiny-slider/min/tiny-slider.js"></script>
     <script src="{{ asset('/') }}assets/hoxia-v1/libs/feather-icons/feather.min.js"></script>
     <script src="{{ asset('/') }}assets/hoxia-v1/js/plugins.init.js"></script>

@@ -113,7 +113,7 @@
                     <p class="text-slate-400 max-w-xl mx-auto">Kami menawarkan harga terbaik untuk undangan yang luar biasa.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-[30px]">
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
                     @foreach ($prices as $price)
                         <div class="group relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
                             @if ($price->popular_label == 'Yes')
@@ -155,11 +155,13 @@
                                 <div class="tiny-slide">
                                     <div class="rounded-md bg-white dark:bg-slate-800 shadow dark:shadow-gray-800 p-6 m-2">
                                         <div class="flex items-center pb-6 border-b border-gray-100 dark:border-gray-800">
-                                            <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt="">
-
+                                            {{-- <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/client/01.jpg" class="h-16 w-16 rounded-full shadow dark:shadow-gray-800" alt=""> --}}
+                                            <div class="h-14 w-14 bg-gray-200 rounded-full shadow dark:shadow-gray-800 flex items-center justify-center">
+                                                <i class="fas fa-user text-3xl text-gray-400"></i>
+                                            </div>
                                             <div class="ps-4">
                                                 <a href="" class="text-lg h6 hover:text-{{ $primary_color }}-500 duration-500 ease-in-out">{{ $testimonial->name }}</a>
-                                                <p class="text-slate-400  text-xs">{{ $testimonial->created_at->diffForHumans() }}</p>
+                                                <p class="text-slate-400 text-xs">{{ $testimonial->created_at->diffForHumans() }}</p>
                                             </div>
                                         </div>
 

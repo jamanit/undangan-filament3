@@ -2,8 +2,7 @@
 
 @section('content')
     <div>
-        <section class="relative py-10 bg-gradient-to-br from-{{ $primary_color }}-700 to-{{ $primary_color }}-600">
-        </section>
+        <div class="relative py-[2.3rem] bg-gradient-to-br from-{{ $primary_color }}-700 to-{{ $primary_color }}-600"></div>
 
         <section class="relative md:pb-24 pb-16">
             {{-- TEMPLATES --}}

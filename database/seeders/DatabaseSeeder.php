@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Inbox;
 use App\Models\Invitation;
 use App\Models\SiteConfig;
 use App\Models\User;
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             TestimonialSeeder::class,
             PriceSeeder::class,
+            InboxSeeder::class,
         ]);
     }
 }
