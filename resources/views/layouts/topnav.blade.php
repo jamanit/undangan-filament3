@@ -35,13 +35,13 @@
 
          <div id="navigation">
              <ul class="navigation-menu justify-end nav-light">
-                 <li><a href="/" class="sub-menu-item text-white hover:text-sky-400">Home</a></li>
-                 <li><a href="/#services" class="sub-menu-item text-white hover:text-sky-400">Services</a></li>
-                 <li><a href="/#templates" class="sub-menu-item text-white hover:text-sky-400">Templates</a></li>
-                 <li><a href="/#prices" class="sub-menu-item text-white hover:text-sky-400">Prices</a></li>
-                 <li><a href="/#testimonials" class="sub-menu-item text-white hover:text-sky-400">Testimonials</a></li>
-                 <li><a href="/#contact_us" class="sub-menu-item text-white hover:text-sky-400">Contact Us</a></li>
-                 <li><a href="/#about_us" class="sub-menu-item text-white hover:text-sky-400">About Us</a></li>
+                 <li><a href="/" class="sub-menu-item">Home</a></li>
+                 <li><a href="/#services" class="sub-menu-item">Services</a></li>
+                 <li><a href="/#templates" class="sub-menu-item">Templates</a></li>
+                 <li><a href="/#prices" class="sub-menu-item">Prices</a></li>
+                 <li><a href="/#testimonials" class="sub-menu-item">Testimonials</a></li>
+                 <li><a href="/#contact_us" class="sub-menu-item">Contact Us</a></li>
+                 <li><a href="/#about_us" class="sub-menu-item">About Us</a></li>
              </ul>
          </div>
      </div>
