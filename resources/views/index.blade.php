@@ -128,7 +128,7 @@
                                 </div>
 
                                 @if ($price->discount)
-                                    <span class="text-xs px-4 py-1 rounded-lg bg-yellow-500">Discount: {{ $price->discount }}</span>
+                                    <span class="text-xs px-4 py-1 rounded-lg bg-yellow-500">Discount {{ $price->discount }}</span>
                                 @endif
 
                                 <div class="text-slate-400 mt-4">

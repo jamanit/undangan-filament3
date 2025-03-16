@@ -19,7 +19,7 @@ class PriceSeeder extends Seeder
                 'title'         => 'Reguler',
                 'price'         => 70000,
                 'discount'      => null,
-                'description'   => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit corrupti at illum ducimus, dolores enim architecto corporis minima quibusdam ratione ipsam animi porro. Rerum incidunt optio maiores mollitia quas aliquid?</p>',
+                'description'   => '<p>Pilihan hemat untuk undangan yang praktis dan elegan.</p>',
                 'popular_label' => 'Yes',
             ],
             [
@@ -27,7 +27,7 @@ class PriceSeeder extends Seeder
                 'title'         => 'Premium',
                 'price'         => 90000,
                 'discount'      => '10%',
-                'description'   => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit corrupti at illum ducimus, dolores enim architecto corporis minima quibusdam ratione ipsam animi porro. Rerum incidunt optio maiores mollitia quas aliquid?</p>',
+                'description'   => '<p>Undangan eksklusif dengan pengalaman yang lebih berkesan.</p>',
                 'popular_label' => 'No',
             ],
         ];
