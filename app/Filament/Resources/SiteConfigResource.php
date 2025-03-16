@@ -116,7 +116,7 @@ class SiteConfigResource extends Resource
                 RichEditor::make('value')
                     ->label('Value')
                     ->string()
-                    ->maxLength(500)
+                    ->maxLength(2000)
                     ->columnSpan('full')
                     ->toolbarButtons([
                         'bold',

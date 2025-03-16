@@ -96,7 +96,7 @@ class SiteConfigSeeder extends Seeder
                 'name'  => 'Phone Number',
                 'key'   => 'phone_number',
                 'type'  => 'number',
-                'value' => '0987654321',
+                'value' => '62876543210',
             ],
             [
                 'name'  => 'Email',
@@ -108,7 +108,7 @@ class SiteConfigSeeder extends Seeder
                 'name'  => 'WhatsApp Number',
                 'key'   => 'whatsapp_number',
                 'type'  => 'number',
-                'value' => '+620987654321',
+                'value' => '62876543210',
             ],
             [
                 'name'  => 'Instagram URL',
