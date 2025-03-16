@@ -15,26 +15,32 @@ class TestimonialSeeder extends Seeder
     {
         $data = [
             [
-                'name'   => 'Name 1',
-                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'name'   => 'Riki David',
+                'text'   => 'Sangat puas dengan undangannya! Desainnya elegan dan proses pembuatannya sangat mudah. Terima kasih!',
                 'star'   => 5,
                 'status' => true,
             ],
             [
-                'name'   => 'Name 2',
-                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'name'   => 'Rahmawati',
+                'text'   => 'Undangannya cantik dan sesuai harapan. Banyak yang memuji desainnya. Layanan yang sangat profesional!',
                 'star'   => 5,
                 'status' => true,
             ],
             [
-                'name'   => 'Name 3',
-                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'name'   => 'Zaki Dhia',
+                'text'   => 'Proses pemesanan mudah dan cepat. Hasil undangannya sangat memuaskan, sangat direkomendasikan!',
+                'star'   => 4,
+                'status' => true,
+            ],
+            [
+                'name'   => 'Heri Saputra',
+                'text'   => 'Layanan luar biasa! Undangan yang dipesan sangat sesuai dengan keinginan kami. Terima kasih banyak!',
                 'star'   => 5,
                 'status' => true,
             ],
             [
-                'name'   => 'Name 4',
-                'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo aliquid quisquam possimus? Soluta quisquam aliquid ad, fugiat illum autem.',
+                'name'   => 'Khairani',
+                'text'   => 'Undangan yang indah dan berkualitas tinggi. Sangat senang bisa bekerja sama dengan tim yang profesional.',
                 'star'   => 5,
                 'status' => true,
             ],
