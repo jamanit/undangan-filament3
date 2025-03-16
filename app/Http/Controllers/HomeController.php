@@ -79,7 +79,7 @@ class HomeController extends Controller
 
     public function template()
     {
-        $templates = Template::where('status', 'Publish')->orderBy('id', 'desc')->paginate(6);
+        $templates = Template::where('status', true)->orderBy('id', 'desc')->paginate(6);
 
         return view('template', compact('templates'));
     }
