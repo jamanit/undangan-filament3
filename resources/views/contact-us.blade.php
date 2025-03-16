@@ -40,7 +40,7 @@
                             <div>
                                 <a target="_blank" href="mailto:{{ $siteConfigs['email']->value }}"
                                     class="relative inline-block tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-{{ $primary_color }}-500 hover:text-{{ $primary_color }}-500 after:bg-{{ $primary_color }}-500 duration-500 ease-in-out">
-                                    dsadddsada{{ $siteConfigs['email']->value }}
+                                    {{ $siteConfigs['email']->value }}
                                 </a>
                             </div>
                         </div>
