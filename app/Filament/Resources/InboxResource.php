@@ -89,15 +89,16 @@ class InboxResource extends Resource
                     ->searchable(),
                 TextColumn::make('message')
                     ->label('Message')
-                    ->limit(50)
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(50),
                 TextColumn::make('created_at')
                     ->label('Created At')
+                    ->sortable()
+                    ->searchable()
                     ->dateTime()
                     ->since()
-                    ->sortable()
-                    ->searchable(),
+                    ->dateTimeTooltip(),
             ])
             ->filters([
                 //

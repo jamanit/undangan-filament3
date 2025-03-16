@@ -136,16 +136,17 @@ class UserResource extends Resource
                     ->searchable(),
                 ImageColumn::make('photo')
                     ->label('Photo')
-                    ->width(50)
-                    ->height(50)
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->width(50)
+                    ->height(50),
                 TextColumn::make('created_at')
                     ->label('Created At')
+                    ->sortable()
+                    ->searchable()
                     ->dateTime()
                     ->since()
-                    ->sortable()
-                    ->searchable(),
+                    ->dateTimeTooltip(),
             ])
             ->filters([
                 //

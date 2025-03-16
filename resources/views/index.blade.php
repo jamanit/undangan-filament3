@@ -122,12 +122,16 @@
                             <div class="p-6">
                                 <h6 class="font-medium mb-5 text-xl">{{ $price->title }}</h6>
 
-                                <div class="flex mb-5">
+                                <div class="flex">
                                     <span class="text-lg font-medium">Rp</span>
                                     <span class="price text-4xl h6 font-semibold mb-0 ml-1">{{ number_format($price->price, 0, ',', '.') }}</span>
                                 </div>
 
-                                <div class="text-slate-400">
+                                @if ($price->discount)
+                                    <span class="text-xs px-4 py-1 rounded-lg bg-yellow-500">Discount: {{ $price->discount }}</span>
+                                @endif
+
+                                <div class="text-slate-400 mt-4">
                                     {!! $price->description !!}
                                 </div>
                                 {{-- <a href=""

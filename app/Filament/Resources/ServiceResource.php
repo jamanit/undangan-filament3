@@ -85,15 +85,16 @@ class ServiceResource extends Resource
                     ->searchable(),
                 TextColumn::make('caption')
                     ->label('Caption')
-                    ->limit(50)
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(50),
                 TextColumn::make('created_at')
                     ->label('Created At')
+                    ->sortable()
+                    ->searchable()
                     ->dateTime()
                     ->since()
-                    ->sortable()
-                    ->searchable(),
+                    ->dateTimeTooltip(),
             ])
             ->filters([
                 //

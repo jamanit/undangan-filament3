@@ -98,7 +98,10 @@ class PriceResource extends Resource
                 TextColumn::make('price')
                     ->label('Price')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->getStateUsing(function ($record) {
+                        return 'Rp. ' . number_format($record->price, 0, ',', '.');
+                    }),
                 TextColumn::make('discount')
                     ->label('Discount')
                     ->searchable()
@@ -120,6 +123,13 @@ class PriceResource extends Resource
                         'Yes' => 'success',
                         'No'  => 'gray',
                     }),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->searchable()
+                    ->dateTime()
+                    ->since()
+                    ->dateTimeTooltip(),
             ])
             ->filters([
                 //

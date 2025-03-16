@@ -86,9 +86,9 @@ class TestimonialResource extends Resource
                     ->sortable(),
                 TextColumn::make('text')
                     ->label('Text')
-                    ->limit(50)
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(50),
                 TextColumn::make('star')
                     ->label('Star')
                     ->searchable()
@@ -102,6 +102,13 @@ class TestimonialResource extends Resource
                         'Publish'   => 'success',
                         'Inpublish' => 'gray',
                     }),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->searchable()
+                    ->dateTime()
+                    ->since()
+                    ->dateTimeTooltip(),
             ])
             ->filters([
                 //

@@ -97,10 +97,11 @@ class EventsRelationManager extends RelationManager
                     ->limit(25),
                 TextColumn::make('created_at')
                     ->label('Created At')
+                    ->sortable()
+                    ->searchable()
                     ->dateTime()
                     ->since()
-                    ->sortable()
-                    ->searchable(),
+                    ->dateTimeTooltip(),
             ])
             ->filters([
                 //
