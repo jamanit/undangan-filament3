@@ -118,7 +118,7 @@
                 <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
                     @foreach ($prices as $price)
                         <div class="group relative overflow-hidden shadow-lg dark:shadow-gray-800 rounded-md h-fit dark:bg-slate-800">
-                            @if ($price->popular_label == 'Yes')
+                            @if ($price->popular_label)
                                 <div class="bg-gradient-to-tr from-{{ $primary_color }}-500 to-{{ $primary_color }}-700 text-white py-2 px-6 h6 text-lg font-medium">Popular</div>
                             @endif
                             <div class="p-6">
