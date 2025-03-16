@@ -3,21 +3,21 @@
          <a class="logo" href="/">
              <span class="inline-block dark:hidden">
                  @if ($siteConfigs['colored_logo']->file)
-                     <img src="{{ Storage::url($siteConfigs['colored_logo']->file) }}" class="rounded-md h-7 l-dark" alt="">
+                     <img src="{{ Storage::url($siteConfigs['colored_logo']->file) }}" class="rounded-sm h-7 l-dark" alt="">
                  @else
-                     <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-dark.png" class="rounded-md h-7 l-dark" alt="">
+                     <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-dark.png" class="rounded-sm h-7 l-dark" alt="">
                  @endif
 
                  @if ($siteConfigs['white_logo']->file)
-                     <img src="{{ Storage::url($siteConfigs['white_logo']->file) }}" class="rounded-md h-7 l-light" alt="">
+                     <img src="{{ Storage::url($siteConfigs['white_logo']->file) }}" class="rounded-sm h-7 l-light" alt="">
                  @else
-                     <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-light.png" class="rounded-md h-7 l-light" alt="">
+                     <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-light.png" class="rounded-sm h-7 l-light" alt="">
                  @endif
              </span>
              @if ($siteConfigs['white_logo']->file)
-                 <img src="{{ Storage::url($siteConfigs['white_logo']->file) }}" class="rounded-md h-7 hidden dark:inline-block" alt="">
+                 <img src="{{ Storage::url($siteConfigs['white_logo']->file) }}" class="rounded-sm h-7 hidden dark:inline-block" alt="">
              @else
-                 <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-white.png" class="rounded-md h-7 hidden dark:inline-block" alt="">
+                 <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-white.png" class="rounded-sm h-7 hidden dark:inline-block" alt="">
              @endif
          </a>
 
