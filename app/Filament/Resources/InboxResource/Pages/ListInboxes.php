@@ -10,10 +10,10 @@ class ListInboxes extends ListRecords
 {
     protected static string $resource = InboxResource::class;
 
-    // protected function getHeaderActions(): array
-    // {
-    //     return [
-    //         Actions\CreateAction::make(),
-    //     ];
-    // }
+    protected function getHeaderActions(): array
+    {
+        return [
+            // Actions\CreateAction::make(),
+        ];
+    }
 }

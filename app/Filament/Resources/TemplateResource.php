@@ -51,19 +51,22 @@ class TemplateResource extends Resource
                     ->label('Name')
                     ->required()
                     ->string()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->disabled(fn(string $context): bool => $context === 'edit'),
                 TextInput::make('parameter')
                     ->label('Parameter')
                     ->required()
                     ->string()
                     ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+                    ->unique(ignoreRecord: true)
+                    ->disabled(fn(string $context): bool => $context === 'edit'),
                 Select::make('type')
                     ->label('Type')
                     ->required()
                     ->options([
                         'Undangan Pernikahan'   => 'Undangan Pernikahan',
-                    ]),
+                    ])
+                    ->disabled(fn(string $context): bool => $context === 'edit'),
                 Select::make('status')
                     ->label('Status')
                     ->required()
@@ -136,7 +139,7 @@ class TemplateResource extends Resource
                     ->icon('heroicon-o-eye')
                     ->url(fn($record) => url('/templates/show/' . $record->parameter))
                     ->openUrlInNewTab(),
-                // Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([
