@@ -61,11 +61,10 @@ class InvitationResource extends Resource
                 Select::make('user_id')
                     ->label('User')
                     ->required()
-                    ->options(
-                        User::all()->pluck('name', 'id')->mapWithKeys(function ($name, $id) {
-                            return [$id => $name . ' (' . User::find($id)->email . ')'];
-                        })->toArray()
-                    )
+                    ->relationship('user', 'name', function (Builder $query) {
+                        return $query->select('id', 'name', 'email');
+                    })
+                    ->getOptionLabelFromRecordUsing(fn(User $record) => "{$record->name} ({$record->email})")
                     ->preload()
                     ->searchable(),
                 TextInput::make('code')
@@ -79,12 +78,8 @@ class InvitationResource extends Resource
                 Select::make('template_id')
                     ->label('Template')
                     ->required()
-                    // ->relationship('template', 'name')
-                    ->options(
-                        Template::all()->pluck('name', 'id')->mapWithKeys(function ($name, $id) {
-                            return [$id => $name . ' (' . Template::find($id)->type . ')'];
-                        })->toArray()
-                    )
+                    ->relationship('template', 'name')
+                    ->getOptionLabelFromRecordUsing(fn(Template $record) => "{$record->name} ({$record->type})")
                     ->preload()
                     ->searchable(),
                 DatePicker::make('expired_date')
