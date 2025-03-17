@@ -41,6 +41,8 @@ use App\Models\Template;
 use App\Filament\Forms\WeddingCoupleForm;
 use App\Filament\Forms\QuoteForm;
 use App\Filament\Forms\AudioForm;
+use App\Filament\Forms\StreamingForm;
+use App\Filament\Forms\ClosingForm;
 
 class InvitationResource extends Resource
 {
@@ -110,6 +112,16 @@ class InvitationResource extends Resource
                         Tabs\Tab::make('Audio')
                             ->icon('heroicon-o-musical-note')
                             ->schema(AudioForm::schema()),
+
+                        // STREAMING
+                        Tabs\Tab::make('Streaming')
+                            ->icon('heroicon-o-video-camera')
+                            ->schema(StreamingForm::schema()),
+
+                        // CLOSING
+                        Tabs\Tab::make('Closing')
+                            ->icon('heroicon-o-x-circle')
+                            ->schema(ClosingForm::schema()),
                     ])
                     ->activeTab(0)
                     ->columnSpanFull()
@@ -177,7 +189,6 @@ class InvitationResource extends Resource
             RelationManagers\EventsRelationManager::class,
             RelationManagers\LoveStoriesRelationManager::class,
             RelationManagers\GalleriesRelationManager::class,
-            RelationManagers\StreamingsRelationManager::class,
             RelationManagers\GiftsRelationManager::class,
             RelationManagers\GuestsRelationManager::class,
             RelationManagers\MessagesRelationManager::class,

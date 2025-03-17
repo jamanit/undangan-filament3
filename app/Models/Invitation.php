@@ -37,6 +37,16 @@ class Invitation extends Model
         return $this->hasOne(Audio::class);
     }
 
+    public function streaming()
+    {
+        return $this->hasOne(Streaming::class);
+    }
+
+    public function closing()
+    {
+        return $this->hasOne(Closing::class);
+    }
+
     public function messages()
     {
         return $this->hasMany(Message::class);
@@ -55,11 +65,6 @@ class Invitation extends Model
     public function galleries()
     {
         return $this->hasMany(Gallery::class);
-    }
-
-    public function streamings()
-    {
-        return $this->hasMany(Streaming::class);
     }
 
     public function gifts()
