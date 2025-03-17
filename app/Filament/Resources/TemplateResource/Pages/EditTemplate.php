@@ -18,7 +18,7 @@ class EditTemplate extends EditRecord
             //     ->icon('heroicon-o-eye')
             //     ->url(fn($record) => url('/templates/show/' . $record->parameter))
             //     ->openUrlInNewTab(),
-            Actions\DeleteAction::make(),
+            // Actions\DeleteAction::make(),
         ];
     }
 }

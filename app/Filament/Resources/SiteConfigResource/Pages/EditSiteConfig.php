@@ -10,10 +10,10 @@ class EditSiteConfig extends EditRecord
 {
     protected static string $resource = SiteConfigResource::class;
 
-    // protected function getHeaderActions(): array
-    // {
-    //     return [
-    //         Actions\DeleteAction::make(),
-    //     ];
-    // }
+    protected function getHeaderActions(): array
+    {
+        return [
+            // Actions\DeleteAction::make(),
+        ];
+    }
 }
