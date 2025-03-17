@@ -6,9 +6,13 @@
                     <div class="grid grid-cols-1">
                         <div class="text-center">
                             @if ($siteConfigs['white_logo']->file)
-                                <img src="{{ Storage::url($siteConfigs['white_logo']->file) }}" class="block mx-auto h-16 rounded-sm" alt="">
+                                <a href="/">
+                                    <img src="{{ Storage::url($siteConfigs['white_logo']->file) }}" class="block mx-auto h-16 rounded-sm" alt="">
+                                </a>
                             @else
-                                <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="block mx-auto h-16 rounded-sm" alt="">
+                                <a href="/">
+                                    <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="block mx-auto h-16 rounded-sm" alt="">
+                                </a>
                             @endif
                             <p class="max-w-xl mx-auto mt-8">Ingin tetap terhubung? Ikuti kami di media sosial atau hubungi tim kami untuk bantuan lebih lanjut!</p>
                         </div>

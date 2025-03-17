@@ -157,7 +157,7 @@
 
                         <div class="content">
                             <h5 class="title h5 text-lg font-medium">Location</h5>
-                            <p class="text-slate-400 mt-3">{{ $siteConfigs['address']->value }}5</p>
+                            <p class="text-slate-400 mt-3">{{ $siteConfigs['address']->value }}</p>
 
                             <div>
                                 <a target="_blank" href="{{ $siteConfigs['map_url']->value }}" data-type="iframe"

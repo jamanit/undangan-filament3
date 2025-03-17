@@ -30,7 +30,6 @@
     <script src="{{ asset('/') }}assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('/') }}assets/tailwindcss/cdn-tailwindcss-3.3.3.js"></script>
     @stack('styles')
-
 </head>
 
 <body class="font-inter text-base text-slate-900 dark:text-white dark:bg-slate-900">
