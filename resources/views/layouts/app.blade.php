@@ -38,9 +38,9 @@
         <div id="status">
             <div class="logo">
                 @if ($siteConfigs['favicon']->file)
-                    <img src="{{ Storage::url($siteConfigs['favicon']->file) }}" class="h-20 w-20 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
+                    <img src="{{ Storage::url($siteConfigs['favicon']->file) }}" class="h-14 w-14 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
                 @else
-                    <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="h-20 w-20 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
+                    <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="h-14 w-14 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
                 @endif
             </div>
             <div class="justify-content-center">
