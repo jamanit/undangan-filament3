@@ -43,7 +43,7 @@
                     <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="h-14 w-14 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
                 @endif
             </div>
-            <div class="justify-content-center bg-">
+            <div class="justify-content-center bg-yellow-400">
                 <div class="text-center">
                     <h4 class="mb-0 mt-2 text-lg font-semibold">{{ $siteConfigs['site_name']->value ?? 'Site Name' }}</h4>
                 </div>
