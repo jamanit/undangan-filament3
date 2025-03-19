@@ -35,8 +35,8 @@
 <body class="font-inter text-base text-slate-900 dark:text-white dark:bg-slate-900">
     <!-- Loader Start -->
     <div id="preloader">
-        <div id="status" class="flex flex-col items-center justify-center bg-red-400">
-            <div class="logo">
+        <div id="status" class="flex flex-col items-center">
+            <div class="logo justify-center bg-red-400">
                 @if ($siteConfigs['favicon']->file)
                     <img src="{{ Storage::url($siteConfigs['favicon']->file) }}" class="h-14 w-14 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
                 @else
