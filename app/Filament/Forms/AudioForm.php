@@ -37,7 +37,7 @@ class AudioForm
                         ->schema([
                             FileUpload::make('file')
                                 ->label('File')
-                                ->required()
+                                // ->required()
                                 ->disk('public')
                                 ->directory('audios')
                                 ->acceptedFileTypes(['audio/mpeg', 'audio/wav', 'audio/ogg'])

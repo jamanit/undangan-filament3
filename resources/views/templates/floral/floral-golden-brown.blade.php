@@ -3,6 +3,20 @@
 @push('wedding_couple_name', 'Wanita & Pria')
 
 @section('content')
+    @if (isset($invitation))
+        @php
+            $template_type = $invitation->template->type ?? 'UNDANGAN PERNIKAHAN';
+
+            $wc_bride_nickname = $invitation->weddingCouple->bride_nickname ?? 'Wanita';
+        @endphp
+    @else
+        @php
+            $template_type = 'UNDANGAN PERNIKAHAN';
+
+            $wc_bride_nickname = 'Wanita';
+        @endphp
+    @endif
+
     <div class="flex items-center justify-end bg-primary-golden-brown-400">
         <!-- bottom footer -->
         @include('templates.floral.bottom-footer', ['color' => 'primary-golden-brown'])
@@ -25,13 +39,13 @@
                 </div>
 
                 <div class="z-30 relative h-full w-full flex items-center justify-center flex-col">
-                    <p class="mb-4 text-base text-primary-golden-brown-400 font-semibold" data-aos="fade-down">UNDANGAN
-                        PERNIKAHAN
+                    <p class="mb-4 text-base text-primary-golden-brown-400 font-semibold" data-aos="fade-down">
+                        {{ $template_type }}
                     </p>
 
                     <div class="flex flex-col items-center justify-center mb-4">
                         <div class="z-40 absolute flex flex-col text-center" data-aos="zoom-in">
-                            <p class="font-sacramento text-4xl font-semibold text-primary-golden-brown-400">Wanita</p>
+                            <p class="font-sacramento text-4xl font-semibold text-primary-golden-brown-400">{{ $wc_bride_nickname }}</p>
                             <p class="font-sacramento text-4xl font-semibold text-primary-golden-brown-400">&</p>
                             <p class="font-sacramento text-4xl font-semibold text-primary-golden-brown-400">Pria</p>
                         </div>

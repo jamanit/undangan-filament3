@@ -6,7 +6,9 @@
             </button>
             <audio id="background-audio" loop="">
                 @if (isset($invitation))
-                    <source src="{{ Storage::url($invitation->audio->file ?? '') }}" type="audio/mp3" />
+                    @if ($invitation->audio->file)
+                        <source src="{{ Storage::url($invitation->audio->file) }}" type="audio/mp3" />
+                    @endif
                 @else
                     <source src="{{ asset('/') }}assets/audios/play-audio.php" type="audio/mp3" />
                 @endif
