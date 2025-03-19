@@ -104,6 +104,12 @@ class HomeController extends Controller
         $folderName     = $parameterParts[0];
         $fileName       = $invitation->template->parameter;
 
+        if ($guest_name) {
+            $guest_name = str_replace(['-', '%20'], ' ', $guest_name);
+        } else {
+            $guest_name = 'Kamu dan Partner';
+        }
+
         if (view()->exists('templates.' . $folderName . '.' . $fileName)) {
             return view('templates.' . $folderName . '.' . $fileName, compact('invitation', 'guest_name'));
         } else {

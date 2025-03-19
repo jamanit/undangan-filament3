@@ -32,13 +32,13 @@ class InvitationSeeder extends Seeder
                 'bride_photo'        => null,
                 'bride_full_name'    => 'Sri Melati',
                 'bride_nickname'     => 'Melati',
-                'bride_child_number' => 'Anak ke-2',
+                'bride_child_number' => 2,
                 'bride_mother_name'  => 'Ibu Siti Khadijah',
                 'bride_father_name'  => 'Bapak Hasan Basri',
                 'groom_photo'        => null,
                 'groom_full_name'    => 'Fikri Putra',
                 'groom_nickname'     => 'Fikri',
-                'groom_child_number' => 'Anak ke-1',
+                'groom_child_number' => 1,
                 'groom_mother_name'  => 'Ibu Nur Aini',
                 'groom_father_name'  => 'Bapak Zainal Abidin',
                 'opening_greeting'   => "Assalamu'alaikum Warahmatullahi Wabarakatuh",
@@ -61,6 +61,37 @@ class InvitationSeeder extends Seeder
         ];
         foreach ($quotes as $quote) {
             \App\Models\Quote::updateOrCreate(['invitation_id' => $quote['invitation_id']], $quote);
+        }
+
+        $audios = [
+            [
+                'invitation_id' => 1,
+                'file'          => null,
+            ]
+        ];
+        foreach ($audios as $audio) {
+            \App\Models\Audio::updateOrCreate(['invitation_id' => $audio['invitation_id']], $audio);
+        }
+
+        $streamings = [
+            [
+                'invitation_id' => 1,
+                'youtube_url'   => null,
+            ]
+        ];
+        foreach ($streamings as $streaming) {
+            \App\Models\Streaming::updateOrCreate(['invitation_id' => $streaming['invitation_id']], $streaming);
+        }
+
+        $closings = [
+            [
+                'invitation_id'    => 1,
+                'closing_text'     => '<p>Menjadi sebuah kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dalam hari bahagia ini. Terima kasih atas segala ucapan, doa, dan perhatian yang diberikan.</p>',
+                'closing_greeting' => 'Sampai jumpa di hari besar kami!',
+            ]
+        ];
+        foreach ($closings as $closing) {
+            \App\Models\Closing::updateOrCreate(['invitation_id' => $closing['invitation_id']], $closing);
         }
     }
 }

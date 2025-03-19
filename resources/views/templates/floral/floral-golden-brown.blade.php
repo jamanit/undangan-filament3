@@ -6,12 +6,14 @@
     @if (isset($invitation))
         @php
             $template_type = $invitation->template->type ?? 'UNDANGAN PERNIKAHAN';
+            $guest_name = $guest_name ?? 'Kamu dan Partner';
 
             $wc_bride_nickname = $invitation->weddingCouple->bride_nickname ?? 'Wanita';
         @endphp
     @else
         @php
             $template_type = 'UNDANGAN PERNIKAHAN';
+            $guest_name = 'Kamu dan Partner';
 
             $wc_bride_nickname = 'Wanita';
         @endphp
@@ -56,7 +58,7 @@
                         <div class="text-center border-2 border-primary-golden-brown-500 rounded-lg p-2 bg-white/75">
                             <p class="text-base text-gray-600">Kepada Yth,</p>
                             <p class="text-base text-gray-600">Bapak/Ibu/Saudara/i</p>
-                            <p class="text-base text-gray-600">KAMU DAN PARTNER</p>
+                            <p class="text-base text-gray-600">{{ $guest_name   }}</p>
                         </div>
 
                         <button onclick="openInvitation()" class="cursor-pointer mx-auto mt-6 rounded-full bg-primary-golden-brown-500 px-4 py-2 text-base text-white hover:bg-primary-golden-brown-600">

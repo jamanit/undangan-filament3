@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('order')->nullable();
             $table->foreignId('invitation_id')->constrained('invitations')->onDelete('cascade');
-            $table->string('youtube_url');
+            $table->string('youtube_url')->nullable();
             $table->timestamps();
         });
     }

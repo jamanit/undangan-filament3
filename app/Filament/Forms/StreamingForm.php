@@ -37,7 +37,7 @@ class StreamingForm
                         ->schema([
                             TextInput::make('youtube_url')
                                 ->label('Youtube URL')
-                                ->required()
+                                ->nullable()
                                 ->string()
                                 ->maxLength(255),
                         ]),

@@ -28,6 +28,6 @@ class EditInvitation extends EditRecord
             ? $record->weddingCouple->bride_nickname . '&' . $record->weddingCouple->groom_nickname
             : 'Wanita&Pria';
 
-        return url('/' . $record->id . '/' . $coupleNames . '/Nama-Tamu');
+        return url('/' . $record->id . '/' . $coupleNames . '/Kamu-dan-Partner');
     }
 }
