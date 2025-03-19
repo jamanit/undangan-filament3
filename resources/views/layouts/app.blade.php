@@ -35,15 +35,15 @@
 <body class="font-inter text-base text-slate-900 dark:text-white dark:bg-slate-900">
     <!-- Loader Start -->
     <div id="preloader">
-        <div id="status" class="flex flex-col items-center justify-center">
-            <div class="logo flex items-center justify-center bg-red-400">
+        <div id="status">
+            <div class="logo !mr-0">
                 @if ($siteConfigs['favicon']->file)
                     <img src="{{ Storage::url($siteConfigs['favicon']->file) }}" class="h-14 w-14 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
                 @else
                     <img src="{{ asset('/') }}assets/hoxia-v1/images/logo-icon-64.png" class="h-14 w-14 d-block mx-auto animate-[spin_10s_linear_infinite] rounded-lg" alt="">
                 @endif
             </div>
-            <div class="justify-content-center bg-yellow-400">
+            <div class="justify-content-center">
                 <div class="text-center">
                     <h4 class="mb-0 mt-2 text-lg font-semibold">{{ $siteConfigs['site_name']->value ?? 'Site Name' }}</h4>
                 </div>
