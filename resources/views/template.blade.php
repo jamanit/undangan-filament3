@@ -31,8 +31,8 @@
                                                     $imageUrl = asset('assets/images/templates/' . $template->parameter . '.' . $ext);
                                                     break;
                                                 }
+                                                dd($templateImagePath);
                                             }
-                                            dd($imageUrl);
                                         @endphp
                                         @if ($imageUrl)
                                             <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
