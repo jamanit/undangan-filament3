@@ -26,19 +26,11 @@
                                             $extensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
                                             $imageUrl = null;
                                             foreach ($extensions as $ext) {
-                                                $templateImagePath = public_path('assets/images/templates/' . $template->parameter . '.' . $ext);
-                                                if (file_exists($templateImagePath)) {
-                                                    $imageUrl = asset('assets/images/templates/' . $template->parameter . '.' . $ext);
-                                                    break;
-                                                }
-                                                dd($templateImagePath);
+                                                $imageUrl = asset('assets/images/templates/' . $template->parameter . '.' . $ext);
+                                                break;
                                             }
                                         @endphp
-                                        @if ($imageUrl)
-                                            <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
-                                        @else
-                                            <div class="h-[250px]"></div>
-                                        @endif
+                                        <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
                                     @endif
                                 </div>
                                 <div class="p-6">
