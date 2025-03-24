@@ -32,6 +32,7 @@
                                                     break;
                                                 }
                                             }
+                                            dd($imageUrl);
                                         @endphp
                                         @if ($imageUrl)
                                             <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
