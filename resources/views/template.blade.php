@@ -23,14 +23,21 @@
                                         <img loading="lazy" src="{{ Storage::url($template->image) }}" alt="" class="h-[250px] oject-contain">
                                     @else
                                         @php
-                                            $extensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
+                                            $extensions = ['png', 'PNG', 'jpg', 'jpeg', 'gif', 'bmp'];
                                             $imageUrl = null;
                                             foreach ($extensions as $ext) {
-                                                $imageUrl = asset('assets/images/templates/' . $template->parameter . '.' . $ext);
-                                                break;
+                                                $templateImagePath = public_path('assets/images/templates/' . $template->parameter . '.' . $ext);
+                                                if (file_exists($templateImagePath)) {
+                                                    $imageUrl = asset('assets/images/templates/' . $template->parameter . '.' . $ext);
+                                                    break;
+                                                }
                                             }
                                         @endphp
-                                        <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
+                                        @if ($imageUrl)
+                                            <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
+                                        @else
+                                            <div class="h-[250px]"></div>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="p-6">
