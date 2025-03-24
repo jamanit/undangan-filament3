@@ -193,11 +193,11 @@ function copyToClipboard(color, text) {
 
 // #################################################################################################################################
 // Fungsi guest presence
-function toggleGuestInput(isHadir) {
+function toggleGuestInput(idPresenceConfirm) {
   const guestInputDiv = document.getElementById('guest_input');
   const guestTotalsInput = document.getElementById('guest_totals');
 
-  if (isHadir) {
+  if (idPresenceConfirm) {
     guestInputDiv.style.display = 'block';
   } else {
     guestInputDiv.style.display = 'none';
@@ -207,15 +207,10 @@ function toggleGuestInput(isHadir) {
 
 // #################################################################################################################################
 const countdownElement = document.getElementById('countdown');
-const targetDate = countdownElement.getAttribute('data-countdown');
+const targetDate = countdownElement.getAttribute('data-countdown') || null;
 
 // Jika nearest_date null atau tidak valid, set countdown ke 00
-if (!targetDate) {
-  document.getElementById('days').innerText = "00";
-  document.getElementById('hours').innerText = "00";
-  document.getElementById('minutes').innerText = "00";
-  document.getElementById('seconds').innerText = "00";
-} else {
+if (targetDate) {
   const countdownTarget = moment(targetDate);
 
   // Fungsi untuk memperbarui countdown setiap detik

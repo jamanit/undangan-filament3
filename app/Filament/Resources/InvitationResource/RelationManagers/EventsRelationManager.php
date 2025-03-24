@@ -23,6 +23,8 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Components\DateTimePicker;
 
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -49,10 +51,9 @@ class EventsRelationManager extends RelationManager
                         'Resepsi'       => 'Resepsi',
                         'Ngunduh Mantu' => 'Ngunduh Mantu',
                     ]),
-                DatePicker::make('event_date')
+                DateTimePicker::make('event_date')
                     ->label('Event Date')
-                    ->required()
-                    ->native(false),
+                    ->required(),
                 TextInput::make('location')
                     ->label('Location')
                     ->required()

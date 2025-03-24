@@ -79,11 +79,26 @@
                     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
                         @foreach ($templates as $template)
                             <div class="relative overflow-hidden group rounded-md shadow hover:shadow-md dark:shadow-gray-800 transition duration-500 dark:bg-slate-800">
-                                <div class="flex items-center justify-center">
+                                <div class="flex items-center justify-center bg-slate-200 dark:bg-slate-800">
                                     @if ($template->image)
                                         <img loading="lazy" src="{{ Storage::url($template->image) }}" alt="" class="h-[250px] oject-contain">
                                     @else
-                                        <img loading="lazy" src="{{ asset('/') }}assets/hoxia-v1/images/blog/1.jpg" alt="">
+                                        @php
+                                            $extensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
+                                            $imageUrl = null;
+                                            foreach ($extensions as $ext) {
+                                                $templateImagePath = public_path('assets/images/templates/' . $template->parameter . '.' . $ext);
+                                                if (file_exists($templateImagePath)) {
+                                                    $imageUrl = asset('assets/images/templates/' . $template->parameter . '.' . $ext);
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        @if ($imageUrl)
+                                            <img loading="lazy" src="{{ $imageUrl }}" alt="Template Image" class="h-[250px] object-contain">
+                                        @else
+                                            <div class="h-[250px]"></div>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="p-6">

@@ -86,8 +86,7 @@ class InvitationResource extends Resource
                     ->searchable(),
                 DatePicker::make('expired_date')
                     ->label('Expired Date')
-                    ->required()
-                    ->native(false),
+                    ->required(),
                 Select::make('status')
                     ->label('Status')
                     ->required()

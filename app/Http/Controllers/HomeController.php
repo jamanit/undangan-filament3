@@ -14,6 +14,7 @@ use App\Mail\InboxMail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Message;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,7 @@ class HomeController extends Controller
 
         if (Cache::has($cacheKey)) {
             $count = Cache::get($cacheKey);
-            if ($count >= 100) {
+            if ($count >= 5) {
                 return response()->json([
                     'status'  => 'error',
                     'message' => 'You have reached the message limit, please try again later.',
@@ -97,9 +98,9 @@ class HomeController extends Controller
         }
     }
 
-    public function invitaion_show(Request $request, ?string $id = null, ?string $wedding_couple_name = null, ?string $guest_name = null)
+    public function invitaion_show(Request $request, ?string $invitation_id = null, ?string $wedding_couple_name = null, ?string $guest_name = null)
     {
-        $invitation     = Invitation::findOrFail($id);
+        $invitation     = Invitation::findOrFail($invitation_id);
         $parameterParts = explode('-', $invitation->template->parameter);
         $folderName     = $parameterParts[0];
         $fileName       = $invitation->template->parameter;
@@ -107,13 +108,69 @@ class HomeController extends Controller
         if ($guest_name) {
             $guest_name = str_replace(['-', '%20'], ' ', $guest_name);
         } else {
-            $guest_name = 'Kamu dan Partner';
+            $guest_name = null;
         }
 
         if (view()->exists('templates.' . $folderName . '.' . $fileName)) {
-            return view('templates.' . $folderName . '.' . $fileName, compact('invitation', 'guest_name'));
+            return view('templates.' . $folderName . '.' . $fileName, compact('invitation', 'wedding_couple_name',  'guest_name'));
         } else {
             abort(404);
         }
+    }
+
+    public function send_message(Request $request)
+    {
+        $ip       = $request->ip();
+        $cacheKey = 'message_count_' . $ip;
+
+        if (Cache::has($cacheKey)) {
+            $count = Cache::get($cacheKey);
+            if ($count >= 5) {
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => 'You have reached the message limit, please try again later.',
+                ], 429);
+            }
+        } else {
+            $count = 0;
+        }
+
+        $validator = Validator::make($request->all(), [
+            'invitation_id'    => 'required|integer',
+            'name'             => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]*$/'],
+            'message'          => 'required|string|max:3000',
+            'presence_confirm' => 'nullable|boolean',
+            'guest_total'      => 'nullable|integer',
+        ], [
+            'name.regex' => 'The name can only contain letters and spaces.',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $data            = $validator->validated();
+        $data['message'] = strip_tags($request->input('message'));
+        $message         = Message::create($data);
+
+        Cache::put($cacheKey, $count + 1, now()->addMinutes(60));
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Message sent successfully!',
+        ]);
+    }
+
+    public function get_message(Request $request)
+    {
+        $messages = Message::where('invitation_id', $request->invitation_id)->orderBy('id', 'desc')->get();
+
+        return response()->json([
+            'success' => true,
+            'data'    => $messages
+        ]);
     }
 }

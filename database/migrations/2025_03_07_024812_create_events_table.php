@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('order')->nullable();
             $table->foreignId('invitation_id')->constrained('invitations')->onDelete('cascade');
             $table->string('type');
-            $table->date('event_date');
+            $table->dateTime('event_date');
             $table->string('location');
             $table->string('address');
             $table->text('map_url')->nullable();

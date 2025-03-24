@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('invitation_id')->constrained('invitations')->onDelete('cascade');
             $table->string('name');
             $table->text('message');
-            $table->string('presence_confirm')->nullable();
+            $table->boolean('presence_confirm')->nullable();
             $table->integer('guest_total')->nullable();
             $table->timestamps();
         });

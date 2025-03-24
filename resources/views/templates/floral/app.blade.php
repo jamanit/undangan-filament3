@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Undangan @stack('wedding_couple_name') - {{ $siteConfigs['site_name']->value ?? 'Site Name' }}</title>
 
     <!-- <link rel="icon" href="" type="image/x-icon" />
@@ -42,6 +44,108 @@
     <script src="{{ asset('/') }}assets/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('/') }}assets/floral-template/script-custom.js"></script>
     @stack('scripts')
+
+    <script>
+        $(document).ready(function() {
+            const invitation_id = $("#invitation_id").val();
+
+            if (invitation_id) {
+                $('#send-message-btn').on('click', function(e) {
+                    e.preventDefault();
+
+                    let sendMessageButton = $('#sendMessageButton');
+                    let formData = $('#message-form').serialize();
+
+                    sendMessageButton.attr('disabled', true).text('Sending...');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('invitations.send_message') }}',
+                        data: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                icon: 'success',
+                                title: response.message,
+                                showConfirmButton: false,
+                                showCloseButton: true,
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
+
+                            $('#message-form')[0].reset();
+
+                            sendMessageButton.attr('disabled', false).text('Send');
+
+                            fetchLatestMessages();
+                        },
+                        error: function(xhr) {
+                            let errorMessage = xhr.responseJSON.message || 'Something went wrong! Please try again later.';
+                            let errors = xhr.responseJSON.errors;
+
+                            if (xhr.status === 422) {
+                                errorMessage = '';
+                                $.each(errors, function(key, value) {
+                                    errorMessage += value[0] + '<br>';
+                                });
+                            }
+
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                icon: 'error',
+                                title: errorMessage,
+                                showConfirmButton: false,
+                                showCloseButton: true,
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
+
+                            sendMessageButton.attr('disabled', false).text('Send');
+                        }
+                    });
+                });
+
+
+                function fetchLatestMessages() {
+                    const color = $("#messages").data("color");
+
+                    $.ajax({
+                        url: '{{ route('invitations.get_message') }}',
+                        data: {
+                            invitation_id: invitation_id,
+                        },
+                        method: 'GET',
+                        success: function(response) {
+                            const messagesContainer = $("#messages");
+                            messagesContainer.empty();
+
+                            $.each(response.data, function(index, item) {
+                                const messageCard = `
+                            <div class="bg-green-100 p-4 rounded-md shadow-md">
+                                <p class="font-semibold ${color} text-sm">${item.name}</p>
+                                <p class="text-gray-700 text-sm">${item.message}</p>
+                            </div> 
+                        `;
+                                messagesContainer.append(messageCard);
+                            });
+
+                            messagesContainer.removeClass("hidden");
+                        },
+                        error: function() {
+                            console.error('Error fetching messages');
+                        }
+                    });
+                }
+
+                fetchLatestMessages();
+            }
+        });
+    </script>
 </body>
 
 </html>
