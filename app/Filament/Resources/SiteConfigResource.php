@@ -96,7 +96,6 @@ class SiteConfigResource extends Resource
 
                 FileUpload::make('file')
                     ->label('Value')
-                    ->autofocus()
                     ->image()
                     ->directory('site-configs')
                     ->disk('public')
@@ -111,13 +110,11 @@ class SiteConfigResource extends Resource
                     ->visible(fn($get) => $get('type') === 'file'),
                 TextInput::make('value')
                     ->label('Value')
-                    ->autofocus()
                     ->string()
                     ->maxLength(255)
                     ->visible(fn($get) => $get('type') === 'text'),
                 RichEditor::make('value')
                     ->label('Value')
-                    ->autofocus()
                     ->string()
                     ->maxLength(2000)
                     ->columnSpan('full')
@@ -131,24 +128,20 @@ class SiteConfigResource extends Resource
                     ->visible(fn($get) => $get('type') === 'textarea'),
                 TextInput::make('value')
                     ->label('Value')
-                    ->autofocus()
                     ->string()
                     ->type('color')
                     ->visible(fn($get) => $get('type') === 'color'),
                 TextInput::make('value')
                     ->label('Value')
-                    ->autofocus()
                     ->string()
                     ->type('url')
                     ->visible(fn($get) => $get('type') === 'url'),
                 TextInput::make('value')
                     ->label('Value')
-                    ->autofocus()
                     ->numeric()
                     ->visible(fn($get) => $get('type') === 'number'),
                 TextInput::make('value')
                     ->label('Value')
-                    ->autofocus()
                     ->email()
                     ->visible(fn($get) => $get('type') === 'email'),
             ]);
