@@ -23,7 +23,6 @@ use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugi
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Filament\Navigation\MenuItem;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
-use Filament\Navigation\NavigationItem;
 use Illuminate\Support\Facades\App;
 
 class AdminPanelProvider extends PanelProvider
@@ -77,7 +76,7 @@ class AdminPanelProvider extends PanelProvider
                     ->setNavigationLabel('My Profile')
                     ->setTitle('My Profile')
                     ->setIcon('heroicon-o-user')
-                    ->slug('my-profile')
+                    // ->slug('my-profile')
                     ->shouldShowAvatarForm(
                         value: true,
                         directory: 'avatars',
@@ -100,6 +99,10 @@ class AdminPanelProvider extends PanelProvider
                 'profile' => MenuItem::make()
                     ->label(fn() => Auth::user()->name)
                     ->url(fn(): string => EditProfilePage::getUrl())
+                // ->icon('heroicon-m-user-circle')
+                // ->visible(function (): bool {
+                //     return auth()->user()->company()->exists();
+                // })
             ])
             ->authMiddleware([
                 Authenticate::class,

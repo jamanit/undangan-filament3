@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasAvatar
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles, HasSuperAdmin;
@@ -28,7 +28,6 @@ class User extends Authenticatable
         'email',
         'password',
         'whatsapp_number',
-        'photo',
         'avatar_url',
         'custom_fields',
     ];
@@ -59,8 +58,9 @@ class User extends Authenticatable
 
     public function getFilamentAvatarUrl(): ?string
     {
-        $avatarColumn = config('filament-edit-profile.avatar_column', 'avatar_url');
-        return $this->$avatarColumn ? Storage::url("$this->$avatarColumn") : null;
+        // $avatarColumn = config('filament-edit-profile.avatar_column', 'avatar_url');
+        // return $this->$avatarColumn ? Storage::url("$this->$avatarColumn") : null;
+        return $this->avatar_url ? Storage::url("$this->avatar_url") : null;
     }
 
     public function invitations()
@@ -71,14 +71,7 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::deleting(function ($user) {
-            // delete files when deleted
-            $files = ['photo'];
-            foreach ($files as $file) {
-                if ($user->$file) {
-                    Storage::disk('public')->delete($user->$file);
-                }
-            }
-
+            // delete files when deleted 
             foreach ($user->invitations as $invitation) {
                 if ($invitation->weddingCouple->bride_photo) {
                     Storage::disk('public')->delete($invitation->weddingCouple->bride_photo);

@@ -55,11 +55,11 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('photo')
+                FileUpload::make('avatar_url')
                     ->label('Photo')
                     ->nullable()
                     ->image()
-                    ->directory('users')
+                    ->directory('avatars')
                     ->disk('public')
                     ->enableOpen()
                     // ->enableDownload()
@@ -67,7 +67,7 @@ class UserResource extends Resource
                     ->deleteUploadedFileUsing(function ($file, $record) {
                         Storage::disk('public')->delete($file);
                         $record->update([
-                            'photo' => null,
+                            'avatar_url' => null,
                         ]);
                     }),
                 Grid::make(2)
@@ -134,7 +134,7 @@ class UserResource extends Resource
                     ->label('Whatsapp Number')
                     ->sortable()
                     ->searchable(),
-                ImageColumn::make('photo')
+                ImageColumn::make('avatar_url')
                     ->label('Photo')
                     ->sortable()
                     ->searchable()
