@@ -69,7 +69,7 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarFullyCollapsibleOnDesktop()
             ->sidebarWidth('15rem')
             // ->topNavigation()
-            // ->breadcrumbs(false);
+            // ->breadcrumbs(false)
             ->plugins([FilamentSpatieRolesPermissionsPlugin::make()])
             ->plugins([
                 FilamentEditProfilePlugin::make()

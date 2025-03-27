@@ -73,39 +73,45 @@ class User extends Authenticatable implements HasAvatar
         static::deleting(function ($user) {
             // delete files when deleted 
             foreach ($user->invitations as $invitation) {
-                if ($invitation->weddingCouple->bride_photo) {
-                    Storage::disk('public')->delete($invitation->weddingCouple->bride_photo);
-                }
-                if ($invitation->weddingCouple->groom_photo) {
-                    Storage::disk('public')->delete($invitation->weddingCouple->groom_photo);
-                }
-            }
-
-            foreach ($user->invitations as $invitation) {
-                if ($invitation->quote->image_1) {
-                    Storage::disk('public')->delete($invitation->quote->image_1);
-                }
-                if ($invitation->quote->image_2) {
-                    Storage::disk('public')->delete($invitation->quote->image_2);
-                }
-                if ($invitation->quote->image_3) {
-                    Storage::disk('public')->delete($invitation->quote->image_3);
-                }
-                if ($invitation->quote->image_4) {
-                    Storage::disk('public')->delete($invitation->quote->image_4);
+                if ($invitation->weddingCouple) {
+                    if ($invitation->weddingCouple->bride_photo) {
+                        Storage::disk('public')->delete($invitation->weddingCouple->bride_photo);
+                    }
+                    if ($invitation->weddingCouple->groom_photo) {
+                        Storage::disk('public')->delete($invitation->weddingCouple->groom_photo);
+                    }
                 }
             }
 
             foreach ($user->invitations as $invitation) {
-                if ($invitation->audio->file) {
+                if ($invitation->quote) {
+                    if ($invitation->quote->image_1) {
+                        Storage::disk('public')->delete($invitation->quote->image_1);
+                    }
+                    if ($invitation->quote->image_2) {
+                        Storage::disk('public')->delete($invitation->quote->image_2);
+                    }
+                    if ($invitation->quote->image_3) {
+                        Storage::disk('public')->delete($invitation->quote->image_3);
+                    }
+                    if ($invitation->quote->image_4) {
+                        Storage::disk('public')->delete($invitation->quote->image_4);
+                    }
+                }
+            }
+
+            foreach ($user->invitations as $invitation) {
+                if ($invitation->audio && $invitation->audio->file) {
                     Storage::disk('public')->delete($invitation->audio->file);
                 }
             }
 
             foreach ($user->invitations as $invitation) {
-                foreach ($invitation->galleries as $gallery) {
-                    if ($gallery->photo) {
-                        Storage::disk('public')->delete($gallery->photo);
+                if ($invitation->galleries) {
+                    foreach ($invitation->galleries as $gallery) {
+                        if ($gallery->photo) {
+                            Storage::disk('public')->delete($gallery->photo);
+                        }
                     }
                 }
             }

@@ -87,9 +87,8 @@ class HomeController extends Controller
 
     public function template_show(?string $parameter = null)
     {
-        $parameterParts = explode('-', $parameter);
-        $folderName     = $parameterParts[0];
-        $fileName       = $parameter;
+        $folderName = implode('-', array_slice(explode('-', $parameter), 0, 2));
+        $fileName = implode('-', array_slice(explode('-', $parameter), 2));
 
         if (view()->exists('templates.' . $folderName . '.' . $fileName)) {
             return view('templates.' . $folderName . '.' . $fileName);
@@ -101,9 +100,8 @@ class HomeController extends Controller
     public function invitaion_show(Request $request, ?string $invitation_id = null, ?string $wedding_couple_name = null, ?string $guest_name = null)
     {
         $invitation     = Invitation::findOrFail($invitation_id);
-        $parameterParts = explode('-', $invitation->template->parameter);
-        $folderName     = $parameterParts[0];
-        $fileName       = $invitation->template->parameter;
+        $folderName = implode('-', array_slice(explode('-', $invitation->template->parameter), 0, 2));
+        $fileName = implode('-', array_slice(explode('-', $invitation->template->parameter), 2));
 
         if ($guest_name) {
             $guest_name = str_replace(['-', '%20'], ' ', $guest_name);

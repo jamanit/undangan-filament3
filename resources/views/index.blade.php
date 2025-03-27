@@ -102,7 +102,7 @@
                                     @endif
                                 </div>
                                 <div class="p-6">
-                                    <span class="bg-{{ $primary_color }}-500/5 text-{{ $primary_color }}-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->type }}</span>
+                                    <span class="bg-{{ $primary_color }}-500/5 text-{{ $primary_color }}-500 text-xs font-semibold px-2.5 py-0.5 rounded-full h-5">{{ $template->invitation_type }}</span>
                                     <h5 class="mt-3">
                                         <a href="{{ route('templates.show', $template->parameter) }}" target="_blank" class="title text-lg font-medium hover:text-{{ $primary_color }}-500 duration-500">{{ $template->name }}</a>
                                     </h5>

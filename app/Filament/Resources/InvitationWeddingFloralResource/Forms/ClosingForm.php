@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Forms;
+namespace App\Filament\Resources\InvitationWeddingFloralResource\Forms;
 
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Fieldset;

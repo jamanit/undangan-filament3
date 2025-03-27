@@ -47,6 +47,13 @@ class TemplateResource extends Resource
     {
         return $form
             ->schema([
+                Select::make('invitation_type')
+                    ->label('Invitation Type')
+                    ->required()
+                    ->options([
+                        'Undangan Pernikahan'   => 'Undangan Pernikahan',
+                    ])
+                    ->disabled(fn(string $context): bool => $context === 'edit'),
                 TextInput::make('name')
                     ->label('Name')
                     ->required()
@@ -59,13 +66,6 @@ class TemplateResource extends Resource
                     ->string()
                     ->maxLength(255)
                     ->unique(ignoreRecord: true)
-                    ->disabled(fn(string $context): bool => $context === 'edit'),
-                Select::make('type')
-                    ->label('Type')
-                    ->required()
-                    ->options([
-                        'Undangan Pernikahan'   => 'Undangan Pernikahan',
-                    ])
                     ->disabled(fn(string $context): bool => $context === 'edit'),
                 Select::make('status')
                     ->label('Status')
@@ -97,16 +97,16 @@ class TemplateResource extends Resource
         return $table
             ->defaultSort('id', 'desc')
             ->columns([
+                TextColumn::make('invitation_type')
+                    ->label('Invitation Type')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('parameter')
                     ->label('Parameter')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('type')
-                    ->label('Type')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('status')

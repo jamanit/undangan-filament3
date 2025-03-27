@@ -38,11 +38,6 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Template;
-use App\Filament\Forms\WeddingCoupleForm;
-use App\Filament\Forms\QuoteForm;
-use App\Filament\Forms\AudioForm;
-use App\Filament\Forms\StreamingForm;
-use App\Filament\Forms\ClosingForm;
 
 class InvitationResource extends Resource
 {
@@ -81,7 +76,7 @@ class InvitationResource extends Resource
                     ->label('Template')
                     ->required()
                     ->relationship('template', 'name')
-                    ->getOptionLabelFromRecordUsing(fn(Template $record) => "{$record->name} ({$record->type})")
+                    ->getOptionLabelFromRecordUsing(fn(Template $record) => "{$record->name} ({$record->invitation_type})")
                     ->preload()
                     ->searchable(),
                 DatePicker::make('expired_date')
@@ -94,37 +89,6 @@ class InvitationResource extends Resource
                         'Active'   => 'Active',
                         'Inactive' => 'Inactive',
                     ]),
-
-                Tabs::make()
-                    ->tabs([
-                        // WEDDING COUPLE
-                        Tabs\Tab::make('Wedding Couple')
-                            ->icon('heroicon-o-envelope')
-                            ->schema(WeddingCoupleForm::schema()),
-
-                        // QUOTE
-                        Tabs\Tab::make('Quote')
-                            ->icon('heroicon-o-chat-bubble-bottom-center-text')
-                            ->schema(QuoteForm::schema()),
-
-                        // AUDIO
-                        Tabs\Tab::make('Audio')
-                            ->icon('heroicon-o-musical-note')
-                            ->schema(AudioForm::schema()),
-
-                        // STREAMING
-                        Tabs\Tab::make('Streaming')
-                            ->icon('heroicon-o-video-camera')
-                            ->schema(StreamingForm::schema()),
-
-                        // CLOSING
-                        Tabs\Tab::make('Closing')
-                            ->icon('heroicon-o-x-circle')
-                            ->schema(ClosingForm::schema()),
-                    ])
-                    ->activeTab(0)
-                    ->columnSpanFull()
-                    ->hidden(fn(string $context): bool => $context === 'create'),
             ]);
     }
 
@@ -173,7 +137,12 @@ class InvitationResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->url(fn($record) => route('filament.admin.resources.invitation-wedding-florals.edit', ['record' => $record])),
+                // ->url(function ($record) {
+                //     $parameter = implode('-', array_slice(explode('-', $record->template->parameter), 0, 2));
+                //     return route('filament.admin.resources.invitation-' . $parameter . 's.edit', ['record' => $record]);
+                // }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -185,12 +154,7 @@ class InvitationResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\EventsRelationManager::class,
-            RelationManagers\LoveStoriesRelationManager::class,
-            RelationManagers\GalleriesRelationManager::class,
-            RelationManagers\GiftsRelationManager::class,
-            RelationManagers\GuestsRelationManager::class,
-            RelationManagers\MessagesRelationManager::class,
+            //  
         ];
     }
 
