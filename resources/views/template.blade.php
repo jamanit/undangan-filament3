@@ -13,7 +13,7 @@
                 </div>
 
                 @if ($templates->isEmpty())
-                    <p class="text-center text-slate-400 max-w-xl mx-auto">Template is not yet available.</p>
+                    <p class="text-center text-slate-400 max-w-xl mx-auto">Data is not yet available.</p>
                 @else
                     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
                         @foreach ($templates as $template)
