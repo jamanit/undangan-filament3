@@ -85,7 +85,6 @@
                             <div class="mb-4 text-base text-primary-goldenbrown-400 text-justify" data-aos="fade-right">
                                 <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
                                 <p>(QS Ar-Rum 21)</p>
-                                </p>
                             </div>
                         </div>
                     @endif
