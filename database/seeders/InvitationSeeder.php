@@ -16,8 +16,22 @@ class InvitationSeeder extends Seeder
         $invitaions = [
             [
                 'user_id'      => 1,
-                'code'         => 'KD1234',
+                'code'         => 'KD1239',
                 'template_id'  => 9,
+                'expired_date' => '2025-10-23',
+                'status'       => 'Active',
+            ],
+            [
+                'user_id'      => 1,
+                'code'         => 'KD1235',
+                'template_id'  => 5,
+                'expired_date' => '2025-10-23',
+                'status'       => 'Active',
+            ],
+            [
+                'user_id'      => 1,
+                'code'         => 'KD1231',
+                'template_id'  => 1,
                 'expired_date' => '2025-10-23',
                 'status'       => 'Active',
             ],

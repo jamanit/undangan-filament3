@@ -112,6 +112,13 @@ class InvitationResource extends Resource
                     ->label('Code')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('template.name')
+                    ->label('Template')
+                    ->sortable()
+                    ->searchable()
+                    ->formatStateUsing(function ($state, $record) {
+                        return $record->template->name . ' (' . $record->template->invitation_type . ')';
+                    }),
                 TextColumn::make('expired_date')
                     ->label('Expired Date')
                     ->sortable()
