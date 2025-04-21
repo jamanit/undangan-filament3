@@ -21,6 +21,12 @@ class SiteConfigSeeder extends Seeder
                 'value' => 'UndangBae',
             ],
             [
+                'name'  => 'Description',
+                'key'   => 'description',
+                'type'  => 'textarea',
+                'value' => 'UndangBae adalah platform undangan digital yang didirikan oleh Jaman IT pada 23 Oktober 2024.',
+            ],
+            [
                 'name'  => 'Website URL',
                 'key'   => 'website_url',
                 'type'  => 'url',
