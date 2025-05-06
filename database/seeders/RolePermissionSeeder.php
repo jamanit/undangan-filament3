@@ -15,16 +15,21 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        // Buat role jika belum ada 
-        $RoleAdmin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
-        $RoleUser  = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
+        $RoleSuperAdmin = Role::firstOrCreate(['name' => 'Super Admin', 'guard_name' => 'web']);
+        $RoleAdmin      = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+        $RoleUser       = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
 
         $permissions = Permission::pluck('name')->toArray();
-        $RoleAdmin->syncPermissions($permissions);
+        $RoleSuperAdmin->syncPermissions($permissions);
 
-        $user = User::find(1);
-        if ($user) {
-            $user->assignRole('admin');
+        $superadmin = User::find(1);
+        if ($superadmin) {
+            $superadmin->assignRole('Super Admin');
+        }
+
+        $admin = User::find(2);
+        if ($admin) {
+            $admin->assignRole('admin');
         }
     }
 }

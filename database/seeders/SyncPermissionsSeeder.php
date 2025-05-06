@@ -13,6 +13,6 @@ class SyncPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        Artisan::call('permissions:sync');
+        Artisan::call('permissions:sync', ['--policies' => true]);
     }
 }

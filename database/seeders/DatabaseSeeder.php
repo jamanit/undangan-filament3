@@ -8,6 +8,7 @@ use App\Models\SiteConfig;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,14 +20,23 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
+            'id' => Str::uuid(),
             'name'     => 'Superadmin',
-            'email'    => 'superadmin@gmail.com',
+            'email'    => 'superadmin@email.com',
             'password' => 'password',
         ]);
 
         User::factory()->create([
+            'id' => Str::uuid(),
+            'name'     => 'Admin',
+            'email'    => 'admin@email.com',
+            'password' => 'password',
+        ]);
+
+        User::factory()->create([
+            'id' => Str::uuid(),
             'name'     => 'User',
-            'email'    => 'user@gmail.com',
+            'email'    => 'user@email.com',
             'password' => 'password',
         ]);
 
